@@ -50,10 +50,12 @@ header {
     border: 2px goldenrod;
 }
 
-
 .hero {
-    align-items: center;
+    display: flex;
+    justify-content: center;
 }
+
+
 
 #hero-image {
     max-width: 1360px;
