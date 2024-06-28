@@ -6,6 +6,7 @@
     --backdrop:#403F3D 80%;
 }
 body{
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
     max-width: 1440px;
@@ -66,6 +67,7 @@ header {
 footer {
     display: flex;
     height: 450px;
+    align-self: flex-end;
 }
 
 a {
@@ -109,6 +111,7 @@ footer#contacts {
 }
 
 .hero.container {
+    width: 1360px;
     padding: 0 40px 0 40px 0;
 }
 
@@ -124,6 +127,7 @@ footer#contacts {
 }
 
 .offer {
+    display: grid;
     width: 530px;
     height: 250px;
 }
@@ -135,8 +139,33 @@ footer#contacts {
     line-height: 150%;
 }
 
+.favorite-coffee {
+    display: flex;
+    align-items: center;
+
+}
+
+.favorite-coffee.container {
+    text-align: center;
+}
+
+.image1.Frappuccino, .image2.Macchiato, .image3.Ice-coffee {
+    width: 1152px;
+    height: 640px;
+}
+
 .social {
+    display: inline-grid;
+    grid-auto-flow: row;
+    max-height: 100px;
+    max-width: 204px;
+    max-width: fit-content;
     gap: 12px;
+}
+
+.slider {
+    display: grid;
+    align-self: center;
 }
 
 #contact-link {
@@ -152,8 +181,12 @@ footer#contacts {
 
 #Footer-Text1 {
     color: var(--light);
+    line-height: 75px;
 }
 
 #Footer-Text2 {
     color: var(--accent);
+    line-height: 75px;
 }
+
+
