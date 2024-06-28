@@ -1,9 +1,48 @@
+:root {
+    --dark: #403F3D;
+    --light:#E1D4C9;
+    --accent:#B0907A;
+    --container:#665F55;
+    --backdrop:#403F3D 80%;
+}
 body{
-    background-color: #E1D4C9;
+    display: flex;
+    flex-direction: column;
+    max-width: 1440px;
+    max-height: 4388px;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--light);
     font-family: 'inter';
     font-size: 16px;
     font-weight: 400;
     line-height: 150%;
+}
+
+h1 {
+    font-size: 72px;
+    font-weight: 600;
+    line-height: 105%;
+}
+
+h1.accent{
+    font-style: italic;
+}
+
+h2 {
+    font-size: 60px;
+    font-weight: 600;
+    line-height: 125%;
+}
+
+h2.accent{
+    font-style: italic;
+}
+
+h3 {
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 125%;
 }
 
 ul{
@@ -21,9 +60,23 @@ header {
     flex-direction: column;
     justify-content: space-between;
     align-content: center;
-    
+    gap: 20px;
 }
 
+footer {
+    display: flex;
+    height: 450px;
+}
+
+a {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 150%;
+}
+
+footer#contacts {
+    max-width: 1360px;
+}
 
 .header-menu {
     display: flex;
@@ -32,7 +85,7 @@ header {
     padding: 0px 40px 0px 40px;
     justify-content: space-between;
     align-content: center;
-    color: #403F3D;
+    color: var(--dark);
     font-weight: 600;
     line-height: 24px;   
 }
@@ -55,10 +108,52 @@ header {
     justify-content: center;
 }
 
+.hero.container {
+    padding: 0 40px 0 40px 0;
+}
 
+.footer.container {
+    display: flex;
+    width: 1360px;
+    background: var(--container);
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 40px;
+    gap: 100px;
+    padding: 100px;
+}
+
+.offer {
+    width: 530px;
+    height: 250px;
+}
+
+.contacts-info {
+    color: var(--light);
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 150%;
+}
+
+.social {
+    gap: 12px;
+}
+
+#contact-link {
+    text-decoration: none;
+    color: var(--light);
+}
 
 #hero-image {
     max-width: 1360px;
     height: 644px;
     border-radius: 40px;
+}
+
+#Footer-Text1 {
+    color: var(--light);
+}
+
+#Footer-Text2 {
+    color: var(--accent);
 }
