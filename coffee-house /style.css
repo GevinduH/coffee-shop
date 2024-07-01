@@ -66,6 +66,8 @@ footer {
 }
 
 a {
+    text-decoration: none;
+    color: var(--dark);
     font-size: 16px;
     font-weight: 600;
     line-height: 150%;
@@ -221,6 +223,64 @@ footer#contacts {
 .mobile-app.container {
     display: flex;
     gap: 100px;
+}
+
+.menu.container {
+    height: 1328px;
+    text-align: center;
+
+}
+
+.menu-offer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 40px;
+}
+
+.tab-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+    justify-content: space-between;
+}
+
+.item1, .item2, .item3 {
+    display: flex;
+    align-items: center;
+    border: 1px solid black;
+    border-radius: 100px;
+    width: 115px;
+    height: 46px;
+}
+.icon {
+    border-radius: 100px;
+    background: var(--light);
+    width: 30px;
+}
+
+.preview {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    width: 310px;
+    border: 1px solid #C1B6AD;
+    border-radius: 40px;
+}
+
+
+.preview.image {
+    width: 310px;
+    height: 310px;
+    border-radius: 40px;
+}
+.menu-grid {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 37px;
+    padding-bottom: 100px;
 }
 #socials {
     display: grid;
