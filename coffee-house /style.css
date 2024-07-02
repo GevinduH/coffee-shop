@@ -73,10 +73,56 @@ a {
     line-height: 150%;
 }
 
+
+#applestore-btn {
+    width: 200px;
+    height: 64px;
+    border: 1px solid var(--dark);
+    border-radius: 100px;
+}
 footer#contacts {
     max-width: 1360px;
 }
 
+.nav {
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+    padding-top: 20px;
+    padding-bottom: 10px;
+}
+.nav-list{
+    transition: 1ms;
+}
+
+.nav-list:hover {
+    text-decoration: underline;
+    
+    
+}
+.btn {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 150%;
+    color: var(--dark);
+}
+
+.btn:hover {
+    color:var(--light);
+}
+
+.caption {
+    font-size: 10px;
+    font-weight: 600;
+    line-height: 140;
+}
+
+/*.applestore-logo {
+    padding: 12px 20px;
+}*/
+.applestore-logo:hover {
+    fill: var(--light);
+}
 .accent{
     font-style: italic;
 }
@@ -108,6 +154,23 @@ footer#contacts {
 .hero {
     display: flex;
     justify-content: center;
+}
+
+.hero-text {
+    width: 530px;
+    padding-left: 100px;
+    padding-top: 100px;
+    text-align: left;
+}
+
+.hero.container {
+    position: absolute;
+    background-size: cover;
+    background-position: center;
+    background-image: url(hero-image.png);
+    width: 1360px;
+    height: 644px;
+    border-radius: 40px;
 }
 
 .container {
