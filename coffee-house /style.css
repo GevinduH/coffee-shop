@@ -86,6 +86,14 @@ a {
     gap: 8px;
 }
 
+#playstore-btn:hover .google-play{
+    color: var(--light);
+}
+
+#applestore-btn:hover .apple-store {
+    color: var(--light);
+}
+
 #applestore-btn:hover, #playstore-btn:hover{
     background: var(--container);
 }
@@ -93,6 +101,7 @@ a {
 footer#contacts {
     max-width: 1360px;
 }
+
 
 .nav-list{
     transition: 1ms;
@@ -319,6 +328,13 @@ footer#contacts {
     gap: 100px;
 }
 
+.menu {
+    display: flex;
+    flex-direction: column;
+    margin-top: -10px;
+    margin-bottom: 100px;
+}
+
 .menu.container {
     height: 1328px;
     text-align: center;
@@ -343,31 +359,50 @@ footer#contacts {
 .item1, .item2, .item3 {
     display: flex;
     align-items: center;
-    border: 1px solid black;
+    border: 1px solid #C1B6AD;
+    gap: 8px;
     border-radius: 100px;
-    width: 115px;
+    width: fit-content;
     height: 46px;
+    background: var(--light);
+    padding: 8px 16px 8px 8px;
+    transition: .5s;
 }
 
 .icon {
     border-radius: 100px;
-    background: var(--light);
+    background: #C1B6AD;
     width: 30px;
+}
+
+.item1:hover, .item2:hover, .item3:hover {
+    background-color: var(--container);
+    color: var(--light);
+}
+
+.item1:hover .icon, .item2:hover .icon, .item3:hover .icon {
+    background: #E1D4C9;
+}
+
+.item1:active .icon, .item2:active .icon, .item3:active .icon {
+    background: #E1D4C9;
 }
 
 .preview {
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
-    width: 310px;
     border: 1px solid #C1B6AD;
+    border-radius: 40px;
+    transition: .25s ease-in;
+    width: 310px;
     border-radius: 40px;
 }
 
-.preview.image {
-    width: 310px;
-    height: 310px;
-    border-radius: 40px;
+.preview:hover .preview{
+    width: 279px;
+    height: 279px;
+    cursor: pointer;
 }
 
 .menu-grid {
@@ -389,6 +424,15 @@ footer#contacts {
 
 .contact-link:hover {
     text-decoration: underline var(--light);
+}
+
+.social-buttons:hover {
+    cursor: pointer;
+    fill: #E1D4C9;
+}
+
+.social-buttons:hover .social-btn-elements {
+    fill: var(--dark);
 }
 
 #socials {
