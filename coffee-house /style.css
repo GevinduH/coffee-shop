@@ -20,7 +20,7 @@ body{
     font-size: 16px;
     font-weight: 400;
     line-height: 150%;
-    gap: 100px;
+    gap: 20px;
 }
 
 h1 {
@@ -74,32 +74,34 @@ a {
 }
 
 
-#applestore-btn {
+#applestore-btn, #playstore-btn{
+    display: flex;
+    align-items: center;
+    background: var(--light);
+    padding: 12px 20px;
     width: 200px;
     height: 64px;
     border: 1px solid var(--dark);
     border-radius: 100px;
+    gap: 8px;
 }
+
+#applestore-btn:hover, #playstore-btn:hover{
+    background: var(--container);
+}
+
 footer#contacts {
     max-width: 1360px;
 }
 
-.nav {
-    display: flex;
-    flex-direction: row;
-    gap: 40px;
-    padding-top: 20px;
-    padding-bottom: 10px;
-}
 .nav-list{
     transition: 1ms;
 }
 
 .nav-list:hover {
     text-decoration: underline;
-    
-    
 }
+
 .btn {
     font-size: 16px;
     font-weight: 600;
@@ -111,18 +113,37 @@ footer#contacts {
     color:var(--light);
 }
 
+.btn.menu {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--light);
+    width: 200px;
+    height: 64px;
+    border-radius: 100px;
+    border: none;
+    margin-top: 40px;
+}
+
+.btn.menu:hover {
+    color: var(--dark);
+}
+
+.btn.menu-svg:hover {
+    visibility:visible !important;
+}
+
 .caption {
     font-size: 10px;
     font-weight: 600;
     line-height: 140;
 }
 
-/*.applestore-logo {
-    padding: 12px 20px;
-}*/
 .applestore-logo:hover {
     fill: var(--light);
 }
+
 .accent{
     font-style: italic;
 }
@@ -134,21 +155,15 @@ footer#contacts {
     padding: 0px 40px 0px 40px;
     justify-content: space-between;
     align-content: center;
-    font-weight: 600;
-    line-height: 24px;   
+    /* font-weight: 600;
+    line-height: 24px;    */
 }
 
+.logo {
+    align-self: flex-start;
+}
 .coffee-menu {
     align-self: center;
-}
-
-.hero.svg-image {
-    max-width: 1360px;
-    max-height: 644px;
-}
-
-.svg-image {
-    border: 2px goldenrod;
 }
 
 .hero {
@@ -157,17 +172,19 @@ footer#contacts {
 }
 
 .hero-text {
+    margin-top: -65px;
     width: 530px;
-    padding-left: 100px;
+    margin-left: -650px;
     padding-top: 100px;
     text-align: left;
 }
 
 .hero.container {
-    position: absolute;
+    /* position: relative; */
     background-size: cover;
     background-position: center;
-    background-image: url(hero-image.png);
+    justify-content: center;
+    background-image: url(./images/hero-image.png);
     width: 1360px;
     height: 644px;
     border-radius: 40px;
@@ -252,13 +269,17 @@ footer#contacts {
     width: 100%;
     height: 640px;
 }
+
 .images {
     display: flex;
     gap: 40px;
 }
+
 .column1, .column2 {
+    display: grid;
     gap: 40px;
 }
+
 .about-picture {
     border-radius: 20px;
 }
@@ -317,6 +338,7 @@ footer#contacts {
     width: 115px;
     height: 46px;
 }
+
 .icon {
     border-radius: 100px;
     background: var(--light);
@@ -332,12 +354,12 @@ footer#contacts {
     border-radius: 40px;
 }
 
-
 .preview.image {
     width: 310px;
     height: 310px;
     border-radius: 40px;
 }
+
 .menu-grid {
     display: flex;
     flex-direction: row;
@@ -345,16 +367,18 @@ footer#contacts {
     gap: 37px;
     padding-bottom: 100px;
 }
+
+.contact-link {
+    text-decoration: none;
+    color: var(--light);
+}
+
 #socials {
     display: grid;
     grid-auto-flow: column;
     gap: 12px;
     width: 204px;
     margin-top: -10px;
-}
-#contact-link {
-    text-decoration: none;
-    color: var(--light);
 }
 
 #hero-image {
