@@ -107,6 +107,7 @@ footer#contacts {
     font-weight: 600;
     line-height: 150%;
     color: var(--dark);
+    cursor: pointer;
 }
 
 .btn:hover {
@@ -126,12 +127,21 @@ footer#contacts {
     margin-top: 40px;
 }
 
+.button-wrapper {
+    display: flex;
+    flex-direction: row; 
+    gap: 20px;
+}
+
 .btn.menu:hover {
     color: var(--dark);
 }
 
+.btn.menu-svg {
+    visibility:hidden;
+}
 .btn.menu-svg:hover {
-    visibility:visible !important;
+    visibility:visible;
 }
 
 .caption {
@@ -140,7 +150,7 @@ footer#contacts {
     line-height: 140;
 }
 
-.applestore-logo:hover {
+.applestore-logo:hover, .googleplay-logo:hover {
     fill: var(--light);
 }
 
@@ -295,7 +305,7 @@ footer#contacts {
 }
 
 .about-picture.picture-3 {
-    width: 660px;
+    width: 100%;
     height: 430px;
 }
 
@@ -368,9 +378,17 @@ footer#contacts {
     padding-bottom: 100px;
 }
 
+.mobile-app.container {
+    text-align: left;
+}
+
 .contact-link {
     text-decoration: none;
     color: var(--light);
+}
+
+.contact-link:hover {
+    text-decoration: underline var(--light);
 }
 
 #socials {
