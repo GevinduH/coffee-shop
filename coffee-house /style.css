@@ -79,6 +79,9 @@ a {
     line-height: 150%;
 }
 
+#hero {
+    margin-top: 20px;
+}
 
 #applestore-btn, #playstore-btn {
     display: flex;
@@ -309,9 +312,6 @@ footer#contacts {
     gap: 40px;
 }
 
-.ammata:hover {
-    stroke: #B0907A;
-}
 .slider-button {
     border: none;
     width: 59px;
@@ -320,8 +320,27 @@ footer#contacts {
 }
 
 .slider-button:hover {
-    background-color: var(--container);
     border-radius: 50%;
+}
+
+.right-btn svg:hover  {
+    stroke: var(--light);
+    fill: var(--container);
+}
+
+.right-btn svg {
+    fill: var(--light);
+    stroke: #665F55;
+}
+
+.left-btn svg:hover  {
+    stroke: var(--light);
+    fill: var(--container);
+}
+
+.left-btn svg {
+    fill: var(--light);
+    stroke: #665F55;
 }
 
 .images {
@@ -375,9 +394,10 @@ footer#contacts {
 }
 
 .menu-offer {
-    margin-top: -20px;
+    /* margin-top: -20px; */
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     align-items: center;
     padding-bottom: 0px;
 }
