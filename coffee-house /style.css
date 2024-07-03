@@ -108,6 +108,12 @@ footer#contacts {
     max-width: 1360px;
 }
 
+.main-wrapper {
+    width: 1440px;
+    margin: 0 auto;
+    align-items: center;
+}
+
 .nav {
     width: fit-content;
     margin-left: -15px;
