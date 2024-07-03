@@ -303,6 +303,9 @@ footer#contacts {
     gap: 40px;
 }
 
+.ammata:hover {
+    stroke: #B0907A;
+}
 .slider-button {
     border: none;
     width: 59px;
