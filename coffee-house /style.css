@@ -69,6 +69,7 @@ footer {
     background: var(--container);
     border-radius: 40px;
     align-self: flex-end;
+    margin-left: 100px;
 }
 
 a {
@@ -93,18 +94,6 @@ a {
     border: 1px solid var(--dark);
     border-radius: 100px;
     gap: 8px;
-}
-
-#playstore-btn:hover .google-play {
-    color: var(--light);
-}
-
-#applestore-btn:hover .apple-store {
-    color: var(--light);
-}
-
-#applestore-btn:hover, #playstore-btn:hover {
-    background: var(--container);
 }
 
 footer#contacts {
@@ -180,10 +169,6 @@ footer#contacts {
     line-height: 140;
 }
 
-.applestore-logo:hover, .googleplay-logo:hover {
-    fill: var(--light);
-}
-
 .accent {
     font-style: italic;
 }
@@ -211,10 +196,9 @@ footer#contacts {
 }
 
 .hero-text {
-    margin-top: -65px;
     width: 530px;
     margin-left: -650px;
-    padding-top: 100px;
+    padding-top: 35px;
     text-align: left;
 }
 
@@ -341,6 +325,45 @@ footer#contacts {
 .left-btn svg {
     fill: var(--light);
     stroke: #665F55;
+}
+
+.appstore-btn, .playstore-btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid var(--container);
+    gap: 8px;
+    border-radius: 100px;
+    width: 200px;
+    height: 64px;
+    padding: 12px 20px;
+    background: var(--light);
+}
+
+.playstore-btn svg:hover {
+    fill: var(--light);
+}
+
+.appstore-btn svg:hover {
+    fill: var(--light);
+}
+
+.apple-store svg:hover {
+    stroke: var(--light);
+}
+
+.playstore-btn svg {
+    /* stroke: var(--dark); */
+    fill: var(--dark);
+}
+
+.appstore-btn svg {
+    fill: var(--dark);
+    stroke: var(--dark);
+}
+
+.appstore-btn:hover, .playstore-btn:hover {
+    background: var(--container);
 }
 
 .images {
