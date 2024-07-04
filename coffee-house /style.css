@@ -73,6 +73,7 @@ footer {
 }
 
 a {
+    scroll-behavior: smooth;
     text-decoration: none;
     color: var(--dark);
     font-size: 16px;
@@ -143,6 +144,11 @@ footer#contacts {
     border-radius: 100px;
     border: none;
     margin-top: 40px;
+    gap: 8px;
+}
+
+.menu-text {
+    padding-left: 20px;
 }
 
 .button-wrapper {
@@ -152,14 +158,14 @@ footer#contacts {
     margin-top: 40px;
 }
 
-.btn.menu:hover {
+.menu-text:hover {
     color: var(--dark);
+    padding: 0;
 }
 
-.btn.menu-svg {
-    visibility:hidden;
-}
-.btn.menu-svg:hover {
+
+.btn.menu svg:hover {
+    fill: var(--dark);
     visibility:visible;
 }
 
