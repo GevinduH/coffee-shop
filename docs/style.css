@@ -528,12 +528,12 @@ footer#contacts {
     padding-top: 100px;
 }
 
-.Footer-Text1 {
+.footer-text1 {
     color: var(--light);
     line-height: 75px;
 }
 
-.Footer-Text2 {
+.footer-text2 {
     color: var(--accent);
     line-height: 75px;
     font-style: italic;
