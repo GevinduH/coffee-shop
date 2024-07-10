@@ -470,7 +470,7 @@ footer#contacts {
     background: #E1D4C9;
 }
 
-.item1:active .icon {
+.item:active .icon {
     background: #E1D4C9;
 }
 
@@ -552,6 +552,3 @@ footer#contacts {
     height: 644px;
     border-radius: 40px;
 }
-
-
-
