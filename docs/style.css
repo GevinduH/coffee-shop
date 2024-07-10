@@ -325,7 +325,7 @@ footer#contacts {
     stroke: #665F55;
 }
 
-.appstore-btn, .playstore-btn{
+.appstore-btn, .playstore-btn {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -425,7 +425,7 @@ footer#contacts {
     margin-top: 30px;
 }
 
-.name-and-the-price-of-the-coffee {
+.price-text {
     padding-left: 15px ;
 }
 
@@ -442,7 +442,7 @@ footer#contacts {
     justify-content: space-between;
 }
 
-.item{
+.item {
     display: flex;
     align-items: center;
     border: 1px solid #C1B6AD;
