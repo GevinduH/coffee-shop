@@ -21,6 +21,7 @@ body {
     font-weight: 400;
     line-height: 150%;
     gap: 20px;
+    margin: 20px 40px 40px 40px;
 }
 
 h1 {
@@ -69,7 +70,7 @@ footer {
     background: var(--container);
     border-radius: 40px;
     align-self: flex-end;
-    margin-left: 100px;
+    margin-left: 30px;
 }
 
 a {
@@ -88,6 +89,7 @@ footer#contacts {
 #hero {
     margin-top: 20px;
 }
+
 
 /* button styles */
 #applestore-btn, #playstore-btn {
@@ -171,10 +173,10 @@ footer#contacts {
     stroke: var(--dark);
 }
 
+
 /* Nav-bar stylings */
 .nav {
     width: fit-content;
-    margin-left: -15px;
 }
 
 .nav-item {
@@ -189,8 +191,6 @@ footer#contacts {
     display: flex;
     height: 60px;
     max-width: 1440px;
-    margin-left: -10px;
-    margin-top: -10px;
     justify-content: space-between;
     align-content: center;
 }
@@ -203,9 +203,14 @@ footer#contacts {
     align-self: center;
 }
 
+.button-icon-burger {
+    visibility: hidden;
+}
+
+
 /* Wrapper stylings */
 .main-wrapper {
-    width: 1440px;
+    width: 1360px;
     margin: 0 auto;
     align-items: center;
 }
@@ -217,7 +222,8 @@ footer#contacts {
     margin-top: 40px;
 }
 
-/* menu section */
+
+/* menu section in the index.html */
 .menu-text {
     padding-left: 20px;
 }
@@ -226,6 +232,7 @@ footer#contacts {
     color: var(--dark);
     padding: 0;
 }
+
 
 /* font stylings */
 .caption {
@@ -237,6 +244,7 @@ footer#contacts {
 .accent {
     font-style: italic;
 }
+
 
 /* hero section stylings */
 .hero {
@@ -261,12 +269,6 @@ footer#contacts {
     border-radius: 40px;
 }
 
-.container {
-    box-sizing: border-box;
-    width: 1360px;
-    margin-left: 40px;
-    margin-right: 40px;
-}
 
 /* footer stylings */
 .footer.container {
@@ -306,9 +308,35 @@ footer#contacts {
     gap: 12px;
 }
 
-.about.container {
-    text-align: justify;
+.contact-link {
+    text-decoration: none;
+    color: var(--light);
 }
+
+.contact-link:hover {
+    text-decoration: underline var(--light);
+}
+
+.social-buttons:hover {
+    cursor: pointer;
+    fill: #E1D4C9;
+}
+
+.social-buttons:hover .social-btn-elements {
+    fill: var(--dark);
+}
+
+.footer-text1 {
+    color: var(--light);
+    line-height: 75px;
+}
+
+.footer-text2 {
+    color: var(--accent);
+    line-height: 75px;
+    font-style: italic;
+}
+
 
 /* favorite coffee section styling */
 .image.Frappuccino, .image.Macchiato, .image.Ice-coffee {
@@ -371,6 +399,8 @@ footer#contacts {
     stroke: #665F55;
 }
 
+
+/* about section styles */
 .images {
     display: flex;
     gap: 40px;
@@ -405,11 +435,16 @@ footer#contacts {
     height: 590px;
 }
 
-.mobile-app.container {
-    display: flex;
-    gap: 100px;
+.about.container {
+    text-align: justify;
 }
 
+.container {
+    box-sizing: border-box;
+    width: 1360px;
+}
+
+/* menu in coffee.html */
 .menu {
     display: flex;
     flex-direction: column;
@@ -501,7 +536,6 @@ footer#contacts {
     display: flex;
 }
 
-
 .menu-grid {
     display: flex;
     flex-direction: row;
@@ -510,41 +544,15 @@ footer#contacts {
     padding-bottom: 100px;
 }
 
-.mobile-app.container {
-    text-align: left;
-}
-
-.contact-link {
-    text-decoration: none;
-    color: var(--light);
-}
-
-.contact-link:hover {
-    text-decoration: underline var(--light);
-}
-
-.social-buttons:hover {
-    cursor: pointer;
-    fill: #E1D4C9;
-}
-
-.social-buttons:hover .social-btn-elements {
-    fill: var(--dark);
-}
-
+/* mobile app stylings */
 .download-text {
     padding-top: 100px;
 }
 
-.footer-text1 {
-    color: var(--light);
-    line-height: 75px;
-}
-
-.footer-text2 {
-    color: var(--accent);
-    line-height: 75px;
-    font-style: italic;
+.mobile-app.container {
+    display: flex;
+    gap: 100px;
+    text-align: left;
 }
 
 #socials {
@@ -559,4 +567,103 @@ footer#contacts {
     max-width: 1360px;
     height: 644px;
     border-radius: 40px;
+}
+
+@media (max-width:768px) {
+    body{
+        max-width: 768px;
+    }
+    
+    footer{
+        margin-left: -1px;
+        height: 736px;
+    }
+
+    .container {
+        width: 688px;
+    }
+    .main-wrapper {
+        width: 688px;
+    }
+    .button-icon-burger {
+        visibility: visible;
+    }
+
+    .nav-item {
+        visibility: hidden;
+    }
+
+    .hero-text {
+        width: 530px;
+        margin-left: -650px;
+        padding-top: 35px;
+        text-align: left;
+    }
+    
+    .hero.container {
+        width: 688px;
+        height: 644px;
+        border-radius: 40px;
+    }
+
+    /* favorite coffee section styling */
+    .image.Frappuccino, .image.Macchiato, .image.Ice-coffee {
+        width: 480px;
+        height: 480px;
+        object-fit: contain;
+    }
+
+    .row-slider {
+        display: grid;
+        grid-auto-flow: column;
+        max-width: 488px;
+        overflow:hidden;
+        grid-template-columns: 1fr;
+        align-self: center;
+    }
+
+    .slider.container {
+        display: flex;
+        flex-direction: row;
+        width: 688px;
+        width: 100%;
+        height: 640px;
+        align-items: center;
+        justify-content:space-between ;
+        gap: 40px;
+    }
+
+    .slider-button {
+        border: none;
+        width: 59px;
+        height: 59px;
+        background-color: var(--light);
+    }
+    
+    .slider-image {
+        width: 480px;
+    }
+
+    .description {
+        width: 480px;
+    }
+
+    /* footer */
+    .footer.container {
+        flex-direction: column;
+    }
+
+    .offer {
+        margin-left: 0;
+        text-align: left;
+    }
+
+    /* mobile app stylings */
+    .mobile-app.container {
+        display: flex;
+        gap: 100px;
+        text-align: left;
+        flex-wrap: wrap;
+    }
+
 }
