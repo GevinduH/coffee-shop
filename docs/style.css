@@ -70,7 +70,6 @@ footer {
     background: var(--container);
     border-radius: 40px;
     align-self: flex-end;
-    margin-left: 30px;
 }
 
 a {
@@ -273,10 +272,11 @@ footer#contacts {
 /* footer stylings */
 .footer.container {
     display: flex;
-    justify-content: space-around;
+    flex-direction: row;
     gap: 100px;
     padding: 100px;
     text-align: left;
+    margin-top: -50px;
 }
 
 .offer {
@@ -296,7 +296,7 @@ footer#contacts {
     font-weight: 600;
     line-height: 150%;
     gap: 40px;
-    margin-left: -400px;
+    margin-top: 60px;
 }
 
 .social {
