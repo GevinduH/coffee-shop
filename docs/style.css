@@ -548,11 +548,10 @@ img.about-picture.picture-4 {
     flex-direction: row;
     flex-wrap: wrap;
     gap: 37px;
-    padding-bottom: 100px;
 }
 
 .button-reload {
-    visibility: hidden;
+    display: none;
 }
 
 /* mobile app stylings */
@@ -598,7 +597,7 @@ img.about-picture.picture-4 {
     }
 
     .container {
-        width: 768px;
+        width: 688px;
     }
 
     .main-wrapper {
@@ -750,8 +749,12 @@ img.about-picture.picture-4 {
 
     /* menu in coffee.html */
     .button-reload {
-        visibility:visible;
+        display:block;
         width: 688px;
+    }
+
+    .second-preview {
+        display: none;
     }
 }
 
