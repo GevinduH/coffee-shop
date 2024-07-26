@@ -594,6 +594,7 @@ img.about-picture.picture-4 {
     footer{
         margin-left: -1px;
         height: 736px;
+        width: 688px;
     }
 
     .container {
@@ -613,6 +614,10 @@ img.about-picture.picture-4 {
         visibility: hidden;
     }
 
+    .header-menu {
+        width: 688px;
+    }
+
     /* hero section stylings */
     .hero-text {
         width: 530px;
@@ -629,6 +634,9 @@ img.about-picture.picture-4 {
     }
 
     /* favorite coffee section styling */
+    .favorite-coffee.container {
+        width: 688px;
+    }
     .image.Frappuccino, .image.Macchiato, .image.Ice-coffee {
         width: 480px;
         height: 480px;
@@ -696,9 +704,13 @@ img.about-picture.picture-4 {
         text-align: left;
         flex-wrap: wrap;
         justify-content: center;
+        margin-bottom: 100px;
     }
 
     /* about section styles */
+    .about.container {
+        width: 688px;
+    }
     .images {
         display: flex;
         gap: 40px;
@@ -764,6 +776,7 @@ img.about-picture.picture-4 {
     footer{
         margin-left: -1px;
         height: 526px;
+        width: 348px;
     }
 
     .accent {
@@ -778,12 +791,17 @@ img.about-picture.picture-4 {
         width: 348px;
     }
 
+    /* nav-bar stylings */
     .button-icon-burger {
         visibility: visible;
     }
 
-    .nav-item {
-        visibility: hidden;
+    .header-menu {
+        width: 348px;
+    }
+
+    .nav {
+        display: none;
     }
 
     .hero-text {
