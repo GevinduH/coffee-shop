@@ -761,7 +761,7 @@ img.about-picture.picture-4 {
 @media (max-width:430px) {
     body{
         margin: 20px 16px 40px 16px;
-        width: 380px;
+        width: 348px;
     }
     
     h1 {
@@ -821,6 +821,11 @@ img.about-picture.picture-4 {
     }
 
     /* favorite coffee section styling */
+
+    .favorite-coffee.container {
+        width: 348px;
+    }
+
     .image.Frappuccino, .image.Macchiato, .image.Ice-coffee {
         width: 348px;
         height: 348px;
@@ -860,6 +865,11 @@ img.about-picture.picture-4 {
     .description {
         width: 348px;
         height: 164px;
+    }
+
+    /* about section stylings */
+    .about.container {
+        width: 348px;
     }
 
     /* footer */
@@ -943,4 +953,6 @@ img.about-picture.picture-4 {
         visibility:visible;
         width: 348px;
     }
+
+
 }
