@@ -473,6 +473,10 @@ img.about-picture.picture-4 {
 }
 
 /* menu in coffee.html */
+div.preview {
+    height: 506px;
+}
+
 .menu {
     margin-top: -10px;
 }
@@ -490,12 +494,17 @@ img.about-picture.picture-4 {
 }
 
 .price-text {
-    padding-left: 15px ;
+    padding-left: 20px ;
+}
+
+.coffee-name {
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .coffee-description {
-    margin-top: -15px;
     padding: 0 10px 0 15px;
+    width: 270px;
 }
 
 .tab-list {
@@ -827,9 +836,16 @@ section#mobile-app {
         padding-left: 0px;
     }
 
-
     .coffee-text-h2 {
         width: 688px;
+    }
+
+    .icon {
+        padding-top: 0px;
+    }
+
+    .menu-grid {
+        margin-left: 15px;
     }
 }
 
