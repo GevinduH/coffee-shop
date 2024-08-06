@@ -602,6 +602,10 @@ section#mobile-app {
     text-align: left;
 }
 
+.download-text.h2-text {
+    margin-top: -15px
+}
+
 #hero {
     margin-top: 20px;
     width: fit-content;
@@ -898,18 +902,7 @@ section#mobile-app {
         display: none;
     }
 
-    .hero-text {
-        width: 348px;
-        text-align: left;
-        margin-left: 0;
-        padding: 60px 15px;
-    }
     
-    .hero.container {
-        width: 348px;
-        height: 644px;
-        border-radius: 40px;
-    }
 
     /* favorite coffee section styling */
 
@@ -921,6 +914,7 @@ section#mobile-app {
         width: 348px;
         height: 348px;
         object-fit: contain;
+        margin-top: 0;
     }
 
     .row-slider {
@@ -958,20 +952,19 @@ section#mobile-app {
         height: 164px;
     }
 
-    /* about section stylings */
-    .about.container {
-        width: 348px;
-    }
-
     /* footer */
     .footer.container {
         flex-direction: column;
-        margin-top: 150px;
+        margin-top: 120px;
         justify-content: center;
     }
 
+    .contact-us-text {
+        margin-top: 40px;
+    }
+
     .contacts-info {
-        margin-top: -130px;
+        margin-top: -100px;
         width: 262px;
         margin-left: -100px;
         padding: 0 16px 60px;
@@ -980,13 +973,14 @@ section#mobile-app {
     .offer {
         text-align: left;
         width: 316px;
-        margin-top: -170px;
+        margin-top: -120px;
         margin-left: -100px;
-        padding: 60px 16px 40px 16px;
+        padding: 60px 16px 0px 16px;
     }
 
     .footer-text {
         margin-bottom: 50px;
+        margin-top: -40px;
     }
 
     .footer-text1 {
@@ -1001,14 +995,19 @@ section#mobile-app {
         margin-top: 30px;
     }
 
+    #socials {
+        /* margin-bottom: 50px; */
+    }
+
     /* mobile app stylings */
     .mobile-screens {
         width: 348px;
+        margin-top: -60px;
     }
 
     .download-text {
-        padding-top: 100px;
         width: 348px;
+        margin-top: 20px;
     }
 
     .button-wrapper {
@@ -1017,7 +1016,25 @@ section#mobile-app {
         gap: 20px;
     }
 
+    .download-text.h2-text {
+        margin-bottom: 40px;
+        padding-top: 30px;
+    }
+
     /* about section styles */
+    section#about {
+        margin-top: 50px;
+    }
+
+    .about.container {
+        width: 348px;
+        height: 1580px;
+    }
+
+    .column1 {
+        margin-top: 30px;
+    }
+
     img.about-picture.picture-1 {
         width: 348px;
         height: 590px;
@@ -1045,5 +1062,29 @@ section#mobile-app {
         width: 348px;
     }
 
+    .coffee-text-h2 {
+        width: 348px;
+    }
+
+    .tab-list {
+        gap: 8px;
+    }
+
+    /* hero section stylings */
+    .hero-text {
+        width: 316px;
+        text-align: left;
+        margin-left: 0;
+    }
+    
+    .hero.container {
+        width: 348px;
+        height: 552px;
+        border-radius: 40px;
+    }
+
+    .h1.hero-text.h1 {
+        margin-top: 40px;
+    }
 
 }
