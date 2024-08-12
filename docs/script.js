@@ -703,17 +703,80 @@ const coffeeSelector = document.getElementById("coffee-Selector")
 const teaSelector = document.getElementById("tea-Selector")
 const dessertSelector = document.getElementById("dessert-Selector")
 const grid = document.getElementById("menu-grid");
-const previewCard = document.getElementsByClassName("preview");
 const menuGrid = document.getElementById("menu-grid")
-const previewCard1 = document.getElementById("previewCard")
-  
+ 
+
+function CreateModal(x, imageIndex, i) {
+  menuGrid.innerHTML += `
+  <dialog class="modal">
+      <div class="modal-container">
+          <div class="box">
+              <img
+                  src="./images/${x}-${imageIndex}.jpg"
+                  alt="Photo of a ${x}"
+                  class="preview image" />
+          </div>
+          <div class="modal-description">
+              <div class="modal-title">
+                  <h3 style="margin-top: 0; margin-bottom: 15px">
+                      ${products[i].name}
+                  </h3>
+                  <p style="margin-bottom: 0">
+                      ${products[i].description}
+                  </p>
+              </div>
+              <div class="modal-size">
+                  <p class="Additives-p">Size</p>
+                  <div class="Additives-button-set">
+                      <button class="modal-size-btn button">
+                          <span class="coffee-size button">S</span>
+                          ${products[i].sizes.s.size}
+                      </button>
+                      <button class="modal-size-btn button">
+                          <span class="coffee-size button">M</span> 
+                          ${products[i].sizes.m.size}
+                      </button>
+                      <button class="modal-size-btn button">
+                          <span class="coffee-size button">L</span> 
+                          ${products[i].sizes.l.size}
+                      </button>
+                  </div>
+              </div>
+              <div class="modal-additives">
+                  <p class="Additives-p">Additives</p>
+                  <div class="Additives-button-set">
+                      ${products[i].additives.map(additive => `
+                      <button class="modal-additives-btn button">
+                          ${additive.name} (+$${additive["add-price"]})
+                      </button>`).join('')}
+                  </div>
+              </div>
+          </div>
+          <div class="modal-close">
+              <button class="close-button" onclick="CloseModal()">Close</button>
+          </div>
+      </div>
+  </dialog>`;
+}
+
+function OpenModal(x, imageIndex, i) {
+  CreateModal(x, imageIndex, i);
+  document.querySelector('.modal').showModal();
+}
+
+function CloseModal() {
+  const modal = document.querySelector('.modal');
+  modal.close();
+  modal.remove();
+}
+
 function CreateMenuGrid(x){
     let gridContent=""; 
     let imageIndex = 1;
     for (let i=0;i<products.length;i++) {
         if (products[i].category === x) { 
             gridContent += ` 
-                    <div class="preview" id="previewCard">
+                    <div class="preview" id="previewCard" onclick="OpenModal(${x},${imageIndex},${i})">
                     <img
                         src="./images/${x}-${imageIndex}.jpg"
                         alt="Photo of a ${x}"
@@ -732,19 +795,9 @@ function CreateMenuGrid(x){
     return grid.innerHTML = gridContent;
 }
 
-function CreateModal(){
-  menuGrid.innerHTML += `
-  <dialog class="modal">
-    <div class="modal-container">
-      <img src="./images/${x}-${imageIndex}.jpg" alt="Photo of a ${x}" class="preview image" />
-    </div>
-  </dialog>`
-}
-
 coffeeSelector.addEventListener("click",(e)=>{
     e.preventDefault();
     CreateMenuGrid(coffeeSelector.value)
-    
 });
 
 teaSelector.addEventListener("click",(e)=>{
@@ -757,10 +810,98 @@ dessertSelector.addEventListener("click",(e)=>{
     CreateMenuGrid(dessertSelector.value)
 });
 
-previewCard.addEventListener("click",()=>{
-  window.alert("hutto");
-  CreateModal();
-  const modal = document.getElementsByClassName("modal");
-  modal.ShowModal();
-})
 
+// <dialog class="modal">
+//               <div class="modal-container">
+//                 <div class="box">
+//                   <img
+//                     src="./images/coffee-1.jpg"
+//                     alt="Photo of a ${x}"
+//                     class="preview image" />
+//                 </div>
+//                 <div class="modal-description">
+//                   <div class="modal-title">
+//                     <h3 style="margin-top: 0; margin-bottom: 15px">
+//                       Irish coffee
+//                     </h3>
+//                     <p style="margin-bottom: 0">
+//                       Fragrant black coffee with Jameson Irish whiskey and
+//                       whipped milk
+//                     </p>
+//                   </div>
+//                   <div class="modal-size">
+//                     <p class="Additives-p">Size</p>
+//                     <div class="Additives-button-set">
+//                       <button class="modal-size-btn button">
+//                         <span class="coffee-size button">S</span>
+//                         200ml
+//                       </button>
+//                       <button class="modal-size-btn button">
+//                         <span class="coffee-size button">M</span> 300ml
+//                       </button>
+//                       <button class="modal-size-btn button">
+//                         <span class="coffee-size button">L</span> 400ml
+//                       </button>
+//                     </div>
+//                   </div>
+//                   <div class="Additives">
+//                     <p class="Additives-p">Additives</p>
+//                     <div class="Additives-button-set">
+//                       <button class="modal-Additives-btn button">
+//                         <span class="coffee-Additives button">1</span> Sugar
+//                       </button>
+//                       <button class="modal-Additives-btn button">
+//                         <span class="coffee-Additives button">2</span> Cinnamon
+//                       </button>
+//                       <button class="modal-Additives-btn button">
+//                         <span class="coffee-Additives button">3</span> Syrup
+//                       </button>
+//                     </div>
+//                   </div>
+//                   <div class="total">
+//                     <h3>Total:</h3>
+//                     <h3>$7.00</h3>
+//                   </div>
+//                   <hr class="modal-hr" />
+//                   <div class="alert">
+//                     <div>
+//                       <svg
+//                         width="16"
+//                         height="16"
+//                         viewBox="0 0 16 16"
+//                         fill="none"
+//                         xmlns="http://www.w3.org/2000/svg">
+//                         <g clip-path="url(#clip0_268_12877)">
+//                           <path
+//                             d="M8 7.66663V11"
+//                             stroke="#403F3D"
+//                             stroke-linecap="round"
+//                             stroke-linejoin="round" />
+//                           <path
+//                             d="M8 5.00667L8.00667 4.99926"
+//                             stroke="#403F3D"
+//                             stroke-linecap="round"
+//                             stroke-linejoin="round" />
+//                           <path
+//                             d="M7.99967 14.6667C11.6816 14.6667 14.6663 11.6819 14.6663 8.00004C14.6663 4.31814 11.6816 1.33337 7.99967 1.33337C4.31778 1.33337 1.33301 4.31814 1.33301 8.00004C1.33301 11.6819 4.31778 14.6667 7.99967 14.6667Z"
+//                             stroke="#403F3D"
+//                             stroke-linecap="round"
+//                             stroke-linejoin="round" />
+//                         </g>
+//                         <defs>
+//                           <clipPath id="clip0_268_12877">
+//                             <rect width="16" height="16" fill="white" />
+//                           </clipPath>
+//                         </defs>
+//                       </svg>
+//                     </div>
+//                     <p class="alert-p caption">
+//                       The cost is not final. Download our mobile app to see the
+//                       final price and place your order. Earn loyalty points and
+//                       enjoy your favorite coffee with up to 20% discount.
+//                     </p>
+//                   </div>
+//                   <button class="modal-Close button">close</button>
+//                 </div>
+//               </div>
+//             </dialog>

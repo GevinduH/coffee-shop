@@ -233,7 +233,7 @@ ul.nav {
 .caption {
     font-size: 10px;
     font-weight: 600;
-    line-height: 140;
+    line-height: 140%;
 }
 
 .accent {
@@ -603,11 +603,13 @@ div.preview {
     width: 850px;
 }
 
+/* modal stylings */
+
 .modal {
     width: 800px;
     height: 504px;
     background-color: #E1D4C9;
-    border: 10px solid black;
+    border: none;
     border-radius: 40px;
 
 }
@@ -615,6 +617,7 @@ div.preview {
 .modal-container {
     display: flex;
     flex-direction: row;
+    width: 768px;
 }
 
 .modal-description {
@@ -632,7 +635,7 @@ div.preview {
 .modal-size-btn.button {
     background-color: var(--light);
     color: var(--dark);
-    max-width:117px;
+    min-width:117px;
     height: 46px;
     padding: 8px 16px 8px 8px;
     border: 1px solid #C1B6AD;
@@ -648,11 +651,12 @@ div.preview {
 
 .modal-size-btn:hover {
     background-color: var(--container);
-    color: var(--dark);
+    color: var(--light);
 }
 
 .modal-size-btn:focus {
     background-color: var(--container);
+    color: var(--light);
 }
 
 .modal-size-btn:focus .coffee-size {
@@ -689,25 +693,26 @@ div.preview {
 
 .modal-Additives-btn:hover {
     background-color: var(--container);
-    color: var(--dark);
+    color: var(--light);
 }
 
 .modal-Additives-btn:focus {
     background-color: var(--container);
+    color: var(--light);
 }
 
-.modal-Additives-btn:focus .coffee-size {
-    background: #E1D4C9;
+.modal-Additives-btn:focus .coffee-Additives {
+    background-color: #E1D4C9;
+    color: var(--light);
+}
+
+.modal-Additives-btn:hover .coffee-Additives {
+    background-color: #E1D4C9;
     color: var(--dark);
 }
 
-.modal-Additives-btn:hover .coffee-size {
-    background: #E1D4C9;
-    color: var(--dark);
-}
-
-.modal-Additives-btn:active .coffee-size {
-    background: #E1D4C9;
+.modal-Additives-btn:active .coffee-Additives {
+    background-color: #E1D4C9;
     color: var(--dark);
 }
 
@@ -718,12 +723,39 @@ div.preview {
 
 .alert {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    gap: 8px;
+    padding-top: 0;
+    padding-bottom: 12px;
 }
 
-hr {
-    border-top: 1px solid red;
+.alert-p {
+    margin-top: 0;
+    padding: 0;
+    text-align: justify;
+}
+
+.modal-hr {
+    border-top: 1px solid #C1B6AD;
+    margin: 0;
   }
+
+.modal-Close {
+    background: var(--light);
+    border: 1px solid #C1B6AD;
+    border-radius: 100px;
+    margin-top: 12px;
+    height: 44px;
+}
+
+.Additives-p {
+    margin-bottom: 10px;
+}
+
+.Additives-button-set {
+    gap: 8px;
+    display: flex;
+}
 
 /* mobile app stylings */
 section#mobile-app {
