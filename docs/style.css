@@ -39,8 +39,7 @@ h3 {
 }
 
 ul {
-    list-style: none;
-    
+    list-style: none;  
 }
 
 ul li {
@@ -83,7 +82,6 @@ footer#contacts {
     margin-top: 100px;
     max-width: 1360px;
 }
-
 
 /* button styles */
 #applestore-btn, #playstore-btn {
@@ -197,14 +195,14 @@ ul.nav {
     align-self: flex-start;
 }
 
-.coffee-menu {
-    align-self: center;
-}
-
 .button-icon-burger {
     display: none;
 }
 
+.coffee-menu {
+    align-self: center;
+    
+}
 
 /* Wrapper stylings */
 .main-wrapper {
@@ -254,16 +252,25 @@ ul.nav {
     margin-left: -630px;
     padding-top: 10px;
     text-align: left;
+    z-index: 1;
 }
 
 .hero.container {
     background-size: cover;
     background-position: center;
     justify-content: center;
-    background-image: url(./images/hero-image.png);
     width: 1360px;
     height: 644px;
     border-radius: 40px;
+}
+
+.video-bg {
+    width: 1360px;
+    background-size: cover;
+    position: absolute;
+    height: 644px;
+    border-radius: 40px;
+    object-fit: fill;
 }
 
 h1.hero-text.h1 {
@@ -475,6 +482,7 @@ img.about-picture.picture-4 {
 /* menu in coffee.html */
 div.preview {
     height: 506px;
+    cursor: pointer;
 }
 
 .menu {
@@ -541,6 +549,15 @@ div.preview {
     color: var(--light);
 }
 
+.item:focus {
+    background-color: var(--container);
+    color: var(--light);
+}
+
+.item:focus .icon {
+    background: #E1D4C9;
+}
+
 .item:hover .icon {
     background: #E1D4C9;
 }
@@ -585,6 +602,128 @@ div.preview {
     margin-bottom: 45px;
     width: 850px;
 }
+
+.modal {
+    width: 800px;
+    height: 504px;
+    background-color: #E1D4C9;
+    border: 10px solid black;
+    border-radius: 40px;
+
+}
+
+.modal-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.modal-description {
+    display: flex;
+    flex-direction: column;
+    padding-left: 20px;
+    color: var(--dark);
+    text-align: left;
+}
+
+.modal::backdrop {
+    background: rgba(64, 63, 61, 0.8);
+}
+
+.modal-size-btn.button {
+    background-color: var(--light);
+    color: var(--dark);
+    max-width:117px;
+    height: 46px;
+    padding: 8px 16px 8px 8px;
+    border: 1px solid #C1B6AD;
+    border-radius: 100px;
+
+}
+
+.coffee-size {
+    background-color: #C1B6AD;
+    padding: 6px 9.75px;
+    border-radius: 100px;
+}
+
+.modal-size-btn:hover {
+    background-color: var(--container);
+    color: var(--dark);
+}
+
+.modal-size-btn:focus {
+    background-color: var(--container);
+}
+
+.modal-size-btn:focus .coffee-size {
+    background: #E1D4C9;
+    color: var(--dark);
+}
+
+.modal-size-btn:hover .coffee-size {
+    background: #E1D4C9;
+    color: var(--dark);
+}
+
+.modal-size-btn:active .coffee-size {
+    background: #E1D4C9;
+    color: var(--dark);
+}
+
+.modal-Additives-btn.button {
+    background-color: var(--light);
+    color: var(--dark);
+    max-width:141px;
+    height: 46px;
+    padding: 8px 16px 8px 8px;
+    border: 1px solid #C1B6AD;
+    border-radius: 100px;
+
+}
+
+.coffee-Additives {
+    background-color: #C1B6AD;
+    padding: 6px 9.75px;
+    border-radius: 100px;
+}
+
+.modal-Additives-btn:hover {
+    background-color: var(--container);
+    color: var(--dark);
+}
+
+.modal-Additives-btn:focus {
+    background-color: var(--container);
+}
+
+.modal-Additives-btn:focus .coffee-size {
+    background: #E1D4C9;
+    color: var(--dark);
+}
+
+.modal-Additives-btn:hover .coffee-size {
+    background: #E1D4C9;
+    color: var(--dark);
+}
+
+.modal-Additives-btn:active .coffee-size {
+    background: #E1D4C9;
+    color: var(--dark);
+}
+
+.total {
+    display: flex;
+    justify-content: space-between;
+}
+
+.alert {
+    display: flex;
+    flex-direction: column;
+}
+
+hr {
+    border-top: 1px solid red;
+  }
 
 /* mobile app stylings */
 section#mobile-app {
@@ -679,6 +818,15 @@ section#mobile-app {
         margin-top: 30px;
         margin-bottom: 42px;
         margin-left: 0px;
+    }
+
+    .video-bg {
+        width: 688px;
+        background-size: cover;
+        position: absolute;
+        height: 644px;
+        border-radius: 40px;
+        object-fit: fill;
     }
 
     /* favorite coffee section styling */
@@ -1081,6 +1229,15 @@ section#mobile-app {
 
     .h1.hero-text.h1 {
         margin-top: 40px;
+    }
+
+    .video-bg {
+        width: 348px;
+        background-size: cover;
+        position: absolute;
+        height: 552px;
+        border-radius: 40px;
+        object-fit: fill;
     }
 
 }

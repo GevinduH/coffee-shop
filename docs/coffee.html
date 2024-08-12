@@ -98,7 +98,7 @@
                 <li class="nav-item"><a href="#contacts">Contact us</a></li>
               </ul>
             </div>
-            <div class="coffee-menu">
+            <div class="coffee-menu" id="coffee-menu">
               <a href="coffee.html" class="nav-item">
                 Menu&nbsp;
                 <svg
@@ -177,22 +177,25 @@
               </h2>
             </div>
             <div class="tab-list">
-              <button class="item button">
+              <button
+                class="item button coffee-Selector"
+                value="coffee"
+                id="coffee-Selector">
                 <span class="icon">☕</span>
                 <span>Coffee</span>
               </button>
-              <button class="item button">
+              <button class="item button" value="tea" id="tea-Selector">
                 <span class="icon">🫖</span>
                 <span>Tea</span>
               </button>
-              <button class="item button">
+              <button class="item button" value="dessert" id="dessert-Selector">
                 <span class="icon">🍰</span>
                 <span>Dessert</span>
               </button>
             </div>
           </div>
-          <div class="menu-grid coffee-card">
-            <div class="preview">
+          <div class="menu-grid coffee-card" id="menu-grid">
+            <!-- <div class="preview">
               <img
                 src="./images/coffee-1.jpg"
                 alt="Photo of a Irish coffee"
@@ -280,7 +283,94 @@
                 Fragrant black coffee with cognac and whipped cream
               </p>
               <h3 class="price-text">$6.50</h3>
-            </div>
+            </div> -->
+            <dialog open class="modal">
+              <div class="modal-container">
+                <div class="box">
+                  <img
+                    src="./images/coffee-1.jpg"
+                    alt="Photo of a ${x}"
+                    class="preview image" />
+                </div>
+                <div class="modal-description">
+                  <div class="modal-title">
+                    <h3>Irish coffee</h3>
+                    <p style="margin-bottom: 0">
+                      Fragrant black coffee with Jameson Irish whiskey and
+                      whipped milk
+                    </p>
+                  </div>
+                  <div class="modal-size">
+                    <p>Size</p>
+                    <button class="modal-size-btn button">
+                      <span class="coffee-size button">S</span>&nbsp;&nbsp;
+                      200ml
+                    </button>
+                    <button class="modal-size-btn button">
+                      <span class="coffee-size button">M</span> 300ml
+                    </button>
+                    <button class="modal-size-btn button">
+                      <span class="coffee-size button">L</span> 400ml
+                    </button>
+                  </div>
+                  <div class="Additives">
+                    <p>Additives</p>
+                    <button class="modal-Additives-btn button">
+                      <span class="coffee-Additives button">1</span> Sugar
+                    </button>
+                    <button class="modal-Additives-btn button">
+                      <span class="coffee-Additives button">2</span> Cinnamon
+                    </button>
+                    <button class="modal-Additives-btn button">
+                      <span class="coffee-Additives button">3</span> Syrup
+                    </button>
+                  </div>
+                  <div class="total">
+                    <h3>Total:</h3>
+                    <h3>$7.00</h3>
+                  </div>
+                  <hr />
+                  <div class="alert">
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 16 16"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <g clip-path="url(#clip0_268_12877)">
+                        <path
+                          d="M8 7.66663V11"
+                          stroke="#403F3D"
+                          stroke-linecap="round"
+                          stroke-linejoin="round" />
+                        <path
+                          d="M8 5.00667L8.00667 4.99926"
+                          stroke="#403F3D"
+                          stroke-linecap="round"
+                          stroke-linejoin="round" />
+                        <path
+                          d="M7.99967 14.6667C11.6816 14.6667 14.6663 11.6819 14.6663 8.00004C14.6663 4.31814 11.6816 1.33337 7.99967 1.33337C4.31778 1.33337 1.33301 4.31814 1.33301 8.00004C1.33301 11.6819 4.31778 14.6667 7.99967 14.6667Z"
+                          stroke="#403F3D"
+                          stroke-linecap="round"
+                          stroke-linejoin="round" />
+                      </g>
+                      <defs>
+                        <clipPath id="clip0_268_12877">
+                          <rect width="16" height="16" fill="white" />
+                        </clipPath>
+                      </defs>
+                    </svg>
+
+                    <p style="text-align: justify">
+                      The cost is not final. Download our mobile app to see the
+                      final price and place your order. Earn loyalty points and
+                      enjoy your favorite coffee with up to 20% discount.
+                    </p>
+                  </div>
+                  <button class="button">close</button>
+                </div>
+              </div>
+            </dialog>
             <div class="button-reload">
               <svg
                 width="60"
@@ -480,5 +570,6 @@
         </div>
       </footer>
     </div>
+    <script src="script.js"></script>
   </body>
 </html>
