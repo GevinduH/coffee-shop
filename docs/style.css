@@ -359,19 +359,32 @@ section#favorite-coffee {
     width: 480px;
     height: 480px;
     object-fit: contain;
+    margin-top: -25px;
 }
 
 .row-slider {
-    display: grid;
-    grid-auto-flow: column;
-    max-width: 1152px;
-    overflow:scroll;
-    grid-template-columns: 1fr;
-    align-self: center;
-    flex: none;
-    order: 0;
-    flex-grow: 0;
+    display: flex; 
+    width: 480px;
+    height: 640px;
+    overflow:hidden;
+    position: relative;
 }
+
+.slider-image {
+    min-width: 100%;
+    transition: transform 0.5s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0; 
+    transform: translateX(100%);
+}
+
+.slider-image:first-child {
+    transform: translateX(0%);
+  }
 
 .slider.container {
     display: flex;
@@ -401,6 +414,7 @@ section#favorite-coffee {
 }
 
 .right-btn svg {
+    cursor: pointer;
     fill: var(--light);
     stroke: #665F55;
 }
@@ -411,8 +425,34 @@ section#favorite-coffee {
 }
 
 .left-btn svg {
+    cursor: pointer;
     fill: var(--light);
     stroke: #665F55;
+}
+
+.favorite-coffee.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.controls {
+    display: flex;
+    gap: 12px;
+    margin-top: 10px;
+}
+
+.control-div {
+    width: 40px;
+    height: 4px;
+    background-color: #C1B6AD;
+    border-radius: 100px;
+    cursor: pointer;
+}
+
+.control-div:hover {
+    background: #665F55;
 }
 
 
@@ -746,6 +786,10 @@ div.preview {
     border-radius: 100px;
     margin-top: 12px;
     height: 44px;
+}
+
+.modal-Close:hover {
+    color: var(--dark);
 }
 
 .Additives-p {

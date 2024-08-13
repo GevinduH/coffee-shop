@@ -704,9 +704,25 @@ const teaSelector = document.getElementById("tea-Selector")
 const dessertSelector = document.getElementById("dessert-Selector")
 const grid = document.getElementById("menu-grid");
 const menuGrid = document.getElementById("menu-grid")
+const navMenuButton = document.getElementById("coffee-menu")
+const navMenuButtonHome =document.getElementById("coffee-menu-homepage")
  
+let total;
+function addToSize(value,i) {
+  total = value+total;
+  console.log(total)
+  document.querySelector('.total h3:last-child').innerText = `$${total.toFixed(2)}`;
+  return total
+}
+function addAdditives(value,i){
+  total = total+value;
+  console.log(total)
+  document.querySelector('.total h3:last-child').innerText = `$${total.toFixed(2)}`;
+  return total;
+}
 
-function CreateModal(x, imageIndex, i) {
+function createModal(x, imageIndex, i) {
+  total = parseInt(products[i].price);
   menuGrid.innerHTML += `
   <dialog class="modal">
       <div class="modal-container">
@@ -728,15 +744,15 @@ function CreateModal(x, imageIndex, i) {
               <div class="modal-size">
                   <p class="Additives-p">Size</p>
                   <div class="Additives-button-set">
-                      <button class="modal-size-btn button">
+                      <button class="modal-size-btn button" onclick="addToSize(${products[i].sizes.s['add-price']},'${i}')">
                           <span class="coffee-size button">S</span>
                           ${products[i].sizes.s.size}
                       </button>
-                      <button class="modal-size-btn button">
+                      <button class="modal-size-btn button" onclick="addToSize(${products[i].sizes.m['add-price']},'${i}')">
                           <span class="coffee-size button">M</span> 
                           ${products[i].sizes.m.size}
                       </button>
-                      <button class="modal-size-btn button">
+                      <button class="modal-size-btn button" onclick="addToSize(${products[i].sizes.l['add-price']},'${i}')">
                           <span class="coffee-size button">L</span> 
                           ${products[i].sizes.l.size}
                       </button>
@@ -745,38 +761,79 @@ function CreateModal(x, imageIndex, i) {
               <div class="modal-additives">
                   <p class="Additives-p">Additives</p>
                   <div class="Additives-button-set">
-                      ${products[i].additives.map(additive => `
-                      <button class="modal-additives-btn button">
-                          ${additive.name} (+$${additive["add-price"]})
-                      </button>`).join('')}
+                      ${products[i].additives.map((additive,index) => `
+                        <button class="modal-Additives-btn button" id="Additives-${index+1}" onclick="addAdditives(${additive["add-price"]},'${i}')">
+                         <span class="coffee-Additives button">${index+1}</span> ${additive.name}
+                      </button>`)}
                   </div>
               </div>
-          </div>
-          <div class="modal-close">
-              <button class="close-button" onclick="CloseModal()">Close</button>
+              <div class="total">
+                    <h3>Total:</h3>
+                    <h3>$${total || products[i].price}</h3>
+                  </div>
+                  <hr class="modal-hr" />
+                  <div class="alert">
+                    <div>
+                      <svg
+                        width="16"
+                        height="16"
+                        viewBox="0 0 16 16"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <g clip-path="url(#clip0_268_12877)">
+                          <path
+                            d="M8 7.66663V11"
+                            stroke="#403F3D"
+                            stroke-linecap="round"
+                            stroke-linejoin="round" />
+                          <path
+                            d="M8 5.00667L8.00667 4.99926"
+                            stroke="#403F3D"
+                            stroke-linecap="round"
+                            stroke-linejoin="round" />
+                          <path
+                            d="M7.99967 14.6667C11.6816 14.6667 14.6663 11.6819 14.6663 8.00004C14.6663 4.31814 11.6816 1.33337 7.99967 1.33337C4.31778 1.33337 1.33301 4.31814 1.33301 8.00004C1.33301 11.6819 4.31778 14.6667 7.99967 14.6667Z"
+                            stroke="#403F3D"
+                            stroke-linecap="round"
+                            stroke-linejoin="round" />
+                        </g>
+                        <defs>
+                          <clipPath id="clip0_268_12877">
+                            <rect width="16" height="16" fill="white" />
+                          </clipPath>
+                        </defs>
+                      </svg>
+                    </div>
+                    <p class="alert-p caption">
+                      The cost is not final. Download our mobile app to see the
+                      final price and place your order. Earn loyalty points and
+                      enjoy your favorite coffee with up to 20% discount.
+                    </p>
+                  </div> 
+              <button class="modal-Close button" onclick="closeModal()">Close</button>
           </div>
       </div>
   </dialog>`;
 }
 
-function OpenModal(x, imageIndex, i) {
-  CreateModal(x, imageIndex, i);
+function openModal(x, imageIndex, i) {
+  createModal(x, imageIndex, i);
   document.querySelector('.modal').showModal();
 }
 
-function CloseModal() {
+function closeModal() {
   const modal = document.querySelector('.modal');
   modal.close();
   modal.remove();
 }
 
-function CreateMenuGrid(x){
+function createMenuGrid(x){
     let gridContent=""; 
     let imageIndex = 1;
     for (let i=0;i<products.length;i++) {
         if (products[i].category === x) { 
             gridContent += ` 
-                    <div class="preview" id="previewCard" onclick="OpenModal(${x},${imageIndex},${i})">
+                    <div class="preview" id="previewCard" onclick="openModal('${x}',${imageIndex},${i})">
                     <img
                         src="./images/${x}-${imageIndex}.jpg"
                         alt="Photo of a ${x}"
@@ -797,111 +854,79 @@ function CreateMenuGrid(x){
 
 coffeeSelector.addEventListener("click",(e)=>{
     e.preventDefault();
-    CreateMenuGrid(coffeeSelector.value)
+    createMenuGrid(coffeeSelector.value)
 });
 
 teaSelector.addEventListener("click",(e)=>{
     e.preventDefault();
-    CreateMenuGrid(teaSelector.value)
+    createMenuGrid(teaSelector.value)
 });
 
 dessertSelector.addEventListener("click",(e)=>{
     e.preventDefault();
-    CreateMenuGrid(dessertSelector.value)
+    createMenuGrid(dessertSelector.value)
+});
+
+navMenuButtonHome.addEventListener("click",()=>{
+  setTimeout(createMenuGrid(coffeeSelector.value),1000);
+})
+
+var indexValue = 1;
+console.log("🚀 ~ indexValue:", indexValue)
+document.addEventListener('DOMContentLoaded', () => {
+  console.log(indexValue)
+  showImage(indexValue);
+  
+  const rightBtn = document.querySelector('.right-btn');
+  console.log("🚀 ~ document.addEventListener ~ rightBtn:", rightBtn)
+  const leftBtn = document.querySelector('.left-btn');
+  console.log("🚀 ~ document.addEventListener ~ leftBtn:", leftBtn)
+
+  rightBtn.addEventListener('click', () => side_slide(1));
+  leftBtn.addEventListener('click', () => side_slide(-1));
 });
 
 
-// <dialog class="modal">
-//               <div class="modal-container">
-//                 <div class="box">
-//                   <img
-//                     src="./images/coffee-1.jpg"
-//                     alt="Photo of a ${x}"
-//                     class="preview image" />
-//                 </div>
-//                 <div class="modal-description">
-//                   <div class="modal-title">
-//                     <h3 style="margin-top: 0; margin-bottom: 15px">
-//                       Irish coffee
-//                     </h3>
-//                     <p style="margin-bottom: 0">
-//                       Fragrant black coffee with Jameson Irish whiskey and
-//                       whipped milk
-//                     </p>
-//                   </div>
-//                   <div class="modal-size">
-//                     <p class="Additives-p">Size</p>
-//                     <div class="Additives-button-set">
-//                       <button class="modal-size-btn button">
-//                         <span class="coffee-size button">S</span>
-//                         200ml
-//                       </button>
-//                       <button class="modal-size-btn button">
-//                         <span class="coffee-size button">M</span> 300ml
-//                       </button>
-//                       <button class="modal-size-btn button">
-//                         <span class="coffee-size button">L</span> 400ml
-//                       </button>
-//                     </div>
-//                   </div>
-//                   <div class="Additives">
-//                     <p class="Additives-p">Additives</p>
-//                     <div class="Additives-button-set">
-//                       <button class="modal-Additives-btn button">
-//                         <span class="coffee-Additives button">1</span> Sugar
-//                       </button>
-//                       <button class="modal-Additives-btn button">
-//                         <span class="coffee-Additives button">2</span> Cinnamon
-//                       </button>
-//                       <button class="modal-Additives-btn button">
-//                         <span class="coffee-Additives button">3</span> Syrup
-//                       </button>
-//                     </div>
-//                   </div>
-//                   <div class="total">
-//                     <h3>Total:</h3>
-//                     <h3>$7.00</h3>
-//                   </div>
-//                   <hr class="modal-hr" />
-//                   <div class="alert">
-//                     <div>
-//                       <svg
-//                         width="16"
-//                         height="16"
-//                         viewBox="0 0 16 16"
-//                         fill="none"
-//                         xmlns="http://www.w3.org/2000/svg">
-//                         <g clip-path="url(#clip0_268_12877)">
-//                           <path
-//                             d="M8 7.66663V11"
-//                             stroke="#403F3D"
-//                             stroke-linecap="round"
-//                             stroke-linejoin="round" />
-//                           <path
-//                             d="M8 5.00667L8.00667 4.99926"
-//                             stroke="#403F3D"
-//                             stroke-linecap="round"
-//                             stroke-linejoin="round" />
-//                           <path
-//                             d="M7.99967 14.6667C11.6816 14.6667 14.6663 11.6819 14.6663 8.00004C14.6663 4.31814 11.6816 1.33337 7.99967 1.33337C4.31778 1.33337 1.33301 4.31814 1.33301 8.00004C1.33301 11.6819 4.31778 14.6667 7.99967 14.6667Z"
-//                             stroke="#403F3D"
-//                             stroke-linecap="round"
-//                             stroke-linejoin="round" />
-//                         </g>
-//                         <defs>
-//                           <clipPath id="clip0_268_12877">
-//                             <rect width="16" height="16" fill="white" />
-//                           </clipPath>
-//                         </defs>
-//                       </svg>
-//                     </div>
-//                     <p class="alert-p caption">
-//                       The cost is not final. Download our mobile app to see the
-//                       final price and place your order. Earn loyalty points and
-//                       enjoy your favorite coffee with up to 20% discount.
-//                     </p>
-//                   </div>
-//                   <button class="modal-Close button">close</button>
-//                 </div>
-//               </div>
-//             </dialog>
+
+navMenuButton.addEventListener("click",(e)=>{
+  e.preventDefault();
+  createMenuGrid(coffeeSelector.value);
+})
+
+
+function btn_Slider(e) {
+  console.log(e)
+  console.log(indexValue)
+  showImage(e)
+}
+
+function side_slide(e) {
+  console.log(e)
+  console.log(indexValue)
+  showImage(indexValue || e )
+}
+
+
+function showImage(e){
+  let i;
+  const img = document.querySelectorAll(".slider-image");
+  console.log("🚀 ~ showImage ~ img:", img)
+  const sliders = document.querySelectorAll(".controls div")
+  console.log("🚀 ~ showImage ~ sliders:", sliders)
+  if (e > img.length) {indexValue = 1};
+  if (e <  1) {indexValue = img.length}
+  
+  img.forEach((img, i) => {
+    img.style.transform = `translateX(${(i - (indexValue - 1)) * 100}%)`;
+  });
+
+  sliders.forEach((slider, i) => {
+    slider.style.background = "#C1B6AD";
+  });
+
+  console.log("🚀 ~ showImage ~ indexValue:", indexValue)
+  img[indexValue-1].style.display = "block";
+  
+  sliders[indexValue-1].style.background = "#665F55";
+}
+
