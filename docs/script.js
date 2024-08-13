@@ -705,8 +705,8 @@ const dessertSelector = document.getElementById("dessert-Selector")
 const grid = document.getElementById("menu-grid");
 const menuGrid = document.getElementById("menu-grid")
 const navMenuButton = document.getElementById("coffee-menu")
-const navMenuButtonHome =document.getElementById("coffee-menu-homepage")
- 
+var indexValue = 1;
+
 let total;
 function addToSize(value,i) {
   total = value+total;
@@ -867,52 +867,30 @@ dessertSelector.addEventListener("click",(e)=>{
     createMenuGrid(dessertSelector.value)
 });
 
-navMenuButtonHome.addEventListener("click",()=>{
-  setTimeout(createMenuGrid(coffeeSelector.value),1000);
-})
+navMenuButton.addEventListener("click",createMenuGrid(coffeeSelector.value))
 
-var indexValue = 1;
-console.log("🚀 ~ indexValue:", indexValue)
 document.addEventListener('DOMContentLoaded', () => {
-  console.log(indexValue)
   showImage(indexValue);
   
   const rightBtn = document.querySelector('.right-btn');
-  console.log("🚀 ~ document.addEventListener ~ rightBtn:", rightBtn)
   const leftBtn = document.querySelector('.left-btn');
-  console.log("🚀 ~ document.addEventListener ~ leftBtn:", leftBtn)
-
   rightBtn.addEventListener('click', () => side_slide(1));
   leftBtn.addEventListener('click', () => side_slide(-1));
 });
 
-
-
-navMenuButton.addEventListener("click",(e)=>{
-  e.preventDefault();
-  createMenuGrid(coffeeSelector.value);
-})
-
-
 function btn_Slider(e) {
-  console.log(e)
-  console.log(indexValue)
-  showImage(e)
+  showImage(indexValue = e)
 }
 
 function side_slide(e) {
-  console.log(e)
-  console.log(indexValue)
-  showImage(indexValue || e )
+  indexValue += e
+  showImage(indexValue)
 }
-
 
 function showImage(e){
   let i;
   const img = document.querySelectorAll(".slider-image");
-  console.log("🚀 ~ showImage ~ img:", img)
   const sliders = document.querySelectorAll(".controls div")
-  console.log("🚀 ~ showImage ~ sliders:", sliders)
   if (e > img.length) {indexValue = 1};
   if (e <  1) {indexValue = img.length}
   
@@ -924,7 +902,6 @@ function showImage(e){
     slider.style.background = "#C1B6AD";
   });
 
-  console.log("🚀 ~ showImage ~ indexValue:", indexValue)
   img[indexValue-1].style.display = "block";
   
   sliders[indexValue-1].style.background = "#665F55";
