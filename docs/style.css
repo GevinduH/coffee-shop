@@ -39,8 +39,7 @@ h3 {
 }
 
 ul {
-    list-style: none;
-    
+    list-style: none;  
 }
 
 ul li {
@@ -83,7 +82,6 @@ footer#contacts {
     margin-top: 100px;
     max-width: 1360px;
 }
-
 
 /* button styles */
 #applestore-btn, #playstore-btn {
@@ -197,14 +195,14 @@ ul.nav {
     align-self: flex-start;
 }
 
-.coffee-menu {
-    align-self: center;
-}
-
 .button-icon-burger {
     display: none;
 }
 
+.coffee-menu {
+    align-self: center;
+    
+}
 
 /* Wrapper stylings */
 .main-wrapper {
@@ -235,7 +233,7 @@ ul.nav {
 .caption {
     font-size: 10px;
     font-weight: 600;
-    line-height: 140;
+    line-height: 140%;
 }
 
 .accent {
@@ -254,16 +252,25 @@ ul.nav {
     margin-left: -630px;
     padding-top: 10px;
     text-align: left;
+    z-index: 1;
 }
 
 .hero.container {
     background-size: cover;
     background-position: center;
     justify-content: center;
-    background-image: url(./images/hero-image.png);
     width: 1360px;
     height: 644px;
     border-radius: 40px;
+}
+
+.video-bg {
+    width: 1360px;
+    background-size: cover;
+    position: absolute;
+    height: 644px;
+    border-radius: 40px;
+    object-fit: fill;
 }
 
 h1.hero-text.h1 {
@@ -352,19 +359,32 @@ section#favorite-coffee {
     width: 480px;
     height: 480px;
     object-fit: contain;
+    margin-top: -15px;
 }
 
 .row-slider {
-    display: grid;
-    grid-auto-flow: column;
-    max-width: 1152px;
-    overflow:scroll;
-    grid-template-columns: 1fr;
-    align-self: center;
-    flex: none;
-    order: 0;
-    flex-grow: 0;
+    display: flex; 
+    width: 480px;
+    height: 640px;
+    overflow:hidden;
+    position: relative;
 }
+
+.slider-image {
+    min-width: 100%;
+    transition: transform 0.5s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0; 
+    transform: translateX(100%);
+}
+
+.slider-image:first-child {
+    transform: translateX(0%);
+  }
 
 .slider.container {
     display: flex;
@@ -394,6 +414,7 @@ section#favorite-coffee {
 }
 
 .right-btn svg {
+    cursor: pointer;
     fill: var(--light);
     stroke: #665F55;
 }
@@ -404,14 +425,49 @@ section#favorite-coffee {
 }
 
 .left-btn svg {
+    cursor: pointer;
     fill: var(--light);
     stroke: #665F55;
+}
+
+h3.favorite-coffee.h3 {
+    margin-bottom: 0;
+}
+
+h3.price.h3 {
+    margin-top: 0;
+}
+
+.favorite-coffee.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: -50px;
+}
+
+.controls {
+    display: flex;
+    gap: 12px;
+    margin-top: 10px;
+}
+
+.control-div {
+    width: 40px;
+    height: 4px;
+    background-color: #C1B6AD;
+    border-radius: 100px;
+    cursor: pointer;
+}
+
+.control-div:hover {
+    background: #665F55;
 }
 
 
 /* about section styles */
 section#about {
-    margin-top: 140px;
+    margin-top: 120px;
 }
 
 .images {
@@ -475,6 +531,7 @@ img.about-picture.picture-4 {
 /* menu in coffee.html */
 div.preview {
     height: 506px;
+    cursor: pointer;
 }
 
 .menu {
@@ -541,6 +598,15 @@ div.preview {
     color: var(--light);
 }
 
+.item:focus {
+    background-color: var(--container);
+    color: var(--light);
+}
+
+.item:focus .icon {
+    background: #E1D4C9;
+}
+
 .item:hover .icon {
     background: #E1D4C9;
 }
@@ -574,6 +640,7 @@ div.preview {
     flex-wrap: wrap;
     gap: 37px;
     margin-top: 40px;
+    justify-content: center;
 }
 
 .button-reload {
@@ -584,6 +651,163 @@ div.preview {
     margin-top: 25px;
     margin-bottom: 45px;
     width: 850px;
+}
+
+/* modal stylings */
+
+.modal {
+    width: 800px;
+    height: 504px;
+    background-color: #E1D4C9;
+    border: none;
+    border-radius: 40px;
+}
+
+.modal-container {
+    display: flex;
+    flex-direction: row;
+    width: 768px;
+}
+
+.modal-description {
+    display: flex;
+    flex-direction: column;
+    padding-left: 20px;
+    color: var(--dark);
+    text-align: left;
+}
+
+.modal::backdrop {
+    background: rgba(64, 63, 61, 0.8);
+}
+
+.modal-size-btn.button {
+    background-color: var(--light);
+    color: var(--dark);
+    min-width:117px;
+    height: 46px;
+    padding: 8px 16px 8px 8px;
+    border: 1px solid #C1B6AD;
+    border-radius: 100px;
+
+}
+
+.coffee-size {
+    background-color: #C1B6AD;
+    padding: 6px 9.75px;
+    border-radius: 100px;
+}
+
+.modal-size-btn:hover {
+    background-color: var(--container);
+    color: var(--light);
+}
+
+.modal-size-btn:focus {
+    background-color: var(--container);
+    color: var(--light);
+}
+
+.modal-size-btn:focus .coffee-size {
+    background: #E1D4C9;
+    color: var(--dark);
+}
+
+.modal-size-btn:hover .coffee-size {
+    background: #E1D4C9;
+    color: var(--dark);
+}
+
+.modal-size-btn:active .coffee-size {
+    background: #E1D4C9;
+    color: var(--dark);
+}
+
+.modal-Additives-btn.button {
+    background-color: var(--light);
+    color: var(--dark);
+    max-width:141px;
+    height: 46px;
+    padding: 8px 16px 8px 8px;
+    border: 1px solid #C1B6AD;
+    border-radius: 100px;
+
+}
+
+.coffee-Additives {
+    background-color: #C1B6AD;
+    padding: 6px 9.75px;
+    border-radius: 100px;
+}
+
+.modal-Additives-btn:hover {
+    background-color: var(--container);
+    color: var(--light);
+}
+
+.modal-Additives-btn:focus {
+    background-color: var(--container);
+    color: var(--light);
+}
+
+.modal-Additives-btn:focus .coffee-Additives {
+    background-color: #E1D4C9;
+    color: var(--light);
+}
+
+.modal-Additives-btn:hover .coffee-Additives {
+    background-color: #E1D4C9;
+    color: var(--dark);
+}
+
+.modal-Additives-btn:active .coffee-Additives {
+    background-color: #E1D4C9;
+    color: var(--dark);
+}
+
+.total {
+    display: flex;
+    justify-content: space-between;
+}
+
+.alert {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    padding-top: 0;
+    padding-bottom: 12px;
+}
+
+.alert-p {
+    margin-top: 0;
+    padding: 0;
+    text-align: justify;
+}
+
+.modal-hr {
+    border-top: 1px solid #C1B6AD;
+    margin: 0;
+  }
+
+.modal-Close {
+    background: var(--light);
+    border: 1px solid #C1B6AD;
+    border-radius: 100px;
+    margin-top: 12px;
+    height: 44px;
+}
+
+.modal-Close:hover {
+    color: var(--dark);
+}
+
+.Additives-p {
+    margin-bottom: 10px;
+}
+
+.Additives-button-set {
+    gap: 8px;
+    display: flex;
 }
 
 /* mobile app stylings */
@@ -603,7 +827,7 @@ section#mobile-app {
 }
 
 .download-text.h2-text {
-    margin-top: -15px
+    margin-top: -110px
 }
 
 #hero {
@@ -647,6 +871,8 @@ section#mobile-app {
     /* nav-bar stylings */
     .button-icon-burger {
         visibility: visible;
+        border: none;
+        background-color: var(--light);
     }
 
     .nav-item {
@@ -661,6 +887,57 @@ section#mobile-app {
         display:inline;
     }
     
+    .nav-menu {
+        display: none;
+    }
+
+    .burger-link {
+        font-size: 32px;
+        font-weight: 600;
+        line-height: 125%;
+    }
+
+    .nav-item1 {
+        display: block;
+    }
+
+    .nav-modal {
+        width: 688px;
+        height:100vh;
+        background-color: #E1D4C9;
+    }
+
+    .nav-modal::backdrop {
+        background-color: var(--light);
+    }
+
+    .nav-modal-flex {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        border: none;
+    }
+
+    .nav-ul {
+        display: flex;
+        flex-direction: column;
+        gap: 60px;
+        padding-left: 0;
+    }
+
+    .nav-modal-div {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        gap: 90px;
+        margin-top: 120px;
+        margin-left: -40px;
+    }
+
+    .button-icon-burger-close {
+        width: fit-content;
+        height: fit-content;
+    }
 
     /* hero section stylings */
     .hero-text {
@@ -681,6 +958,15 @@ section#mobile-app {
         margin-left: 0px;
     }
 
+    .video-bg {
+        width: 688px;
+        background-size: cover;
+        position: absolute;
+        height: 644px;
+        border-radius: 40px;
+        object-fit: fill;
+    }
+
     /* favorite coffee section styling */
     .favorite-coffee.container {
         width: 688px;
@@ -693,12 +979,9 @@ section#mobile-app {
     }
 
     .row-slider {
-        display: grid;
-        grid-auto-flow: column;
         max-width: 488px;
         height: 684px;
         overflow:hidden;
-        grid-template-columns: 1fr;
         align-self: center;
         margin-top: -40px;
     }
@@ -902,9 +1185,62 @@ section#mobile-app {
         display: none;
     }
 
+    .burger-link {
+        font-size: 32px;
+        font-weight: 600;
+        line-height: 125%;
+    }
+
+    .nav-item1 {
+        display: block;
+    }
+
+    .nav-modal {
+        width: 348px;
+        height:100vh;
+        background-color: #E1D4C9;
+    }
+
+    .nav-modal::backdrop {
+        background-color: var(--light);
+    }
+
+    .nav-modal-flex {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        border: none;
+    }
+
+    .nav-ul {
+        display: flex;
+        flex-direction: column;
+        gap: 60px;
+        padding-left: 0;
+    }
+
+    .nav-modal-div {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        width:348px;
+        gap: 90px;
+        margin-top: 120px;
+        margin-left: -70px;
+        padding-right: 40px;
+    }
+
+    .button-icon-burger-close {
+        width: fit-content;
+        height: fit-content;
+        margin-left: -55px;
+    }
     
 
     /* favorite coffee section styling */
+    section#favorite-coffee {
+        margin-top: 120px;
+    }
 
     .favorite-coffee.container {
         width: 348px;
@@ -918,20 +1254,16 @@ section#mobile-app {
     }
 
     .row-slider {
-        display: grid;
-        grid-auto-flow: column;
-        max-width: 348px;
+        width: 348px;
         height: 576px;
         overflow:hidden;
-        grid-template-columns: 1fr;
         align-self: center;
     }
 
     .slider.container {
         width: 348px;
-        width: 100%;
         height: 640px;
-        margin-left: -40px;
+        margin-left: -80px;
     }
 
     .slider-button {
@@ -1003,7 +1335,7 @@ section#mobile-app {
 
     .download-text {
         width: 348px;
-        margin-top: 20px;
+        margin-top: 10px;
     }
 
     .button-wrapper {
@@ -1014,7 +1346,7 @@ section#mobile-app {
 
     .download-text.h2-text {
         margin-bottom: 40px;
-        padding-top: 30px;
+        padding-top: 125px;
     }
 
     /* about section styles */
@@ -1081,6 +1413,15 @@ section#mobile-app {
 
     .h1.hero-text.h1 {
         margin-top: 40px;
+    }
+
+    .video-bg {
+        width: 348px;
+        background-size: cover;
+        position: absolute;
+        height: 552px;
+        border-radius: 40px;
+        object-fit: fill;
     }
 
 }
