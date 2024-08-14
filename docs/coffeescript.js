@@ -706,6 +706,7 @@ const grid = document.getElementById("menu-grid");
 const menuGrid = document.getElementById("menu-grid")
 const menuButton = document.getElementById("coffee-menu")
 var coffee_modal = document.querySelector('.modal')
+const nav_modal = document.querySelector('.nav-modal')
 let total;
 
 function createMenuGrid(x){
@@ -871,3 +872,18 @@ function openModal(x, imageIndex, i) {
     const modal = document.querySelector('.modal');
     modal.showModal();
 }
+
+function openNavModal() {
+    nav_modal.classList.add("nav-modal-flex")
+    document.body.style.position = 'fixed';
+    document.body.style.top = `-${window.scrollY}px`;
+    nav_modal.showModal();
+}
+  
+function closeNavModal() {
+    nav_modal.classList.remove("nav-modal-flex")
+    document.body.style.position = '';
+    document.body.style.top = '';
+    nav_modal.close();
+}
+  
