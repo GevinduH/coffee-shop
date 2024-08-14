@@ -956,8 +956,6 @@ function showImage(e){
 const media = matchMedia('(min-width: 768px)')
 
 media.addEventListener("change",()=>{
-  // window.alert("shit");
-  
 })
 
 function myFunction(media) {
