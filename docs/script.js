@@ -705,6 +705,10 @@ const dessertSelector = document.getElementById("dessert-Selector")
 const grid = document.getElementById("menu-grid");
 const menuGrid = document.getElementById("menu-grid")
 const navMenuButton = document.getElementById("coffee-menu")
+const menuButton = document.getElementById("button-icon-burger")
+const nav_Open_CloseBtn = document.getElementById("nav-open-close")
+const nav_modal = document.querySelector('.nav-modal')
+var coffee_modal = document.querySelector('.modal')
 var indexValue = 1;
 
 let total;
@@ -816,16 +820,22 @@ function createModal(x, imageIndex, i) {
   </dialog>`;
 }
 
-function openModal(x, imageIndex, i) {
-  createModal(x, imageIndex, i);
-  document.querySelector('.modal').showModal();
-}
-
 function closeModal() {
   const modal = document.querySelector('.modal');
+  document.body.style.position = '';
+  document.body.style.top = '';
   modal.close();
   modal.remove();
 }
+
+function openModal(x, imageIndex, i) {
+  createModal(x, imageIndex, i);
+  document.body.style.position = 'fixed';
+  document.body.style.top = `-${window.scrollY}px`;
+  const modal = document.querySelector('.modal');
+  modal.showModal();
+}
+
 
 function createMenuGrid(x){
     let gridContent=""; 
@@ -833,7 +843,7 @@ function createMenuGrid(x){
     for (let i=0;i<products.length;i++) {
         if (products[i].category === x) { 
             gridContent += ` 
-                    <div class="preview" id="previewCard" onclick="openModal('${x}',${imageIndex},${i})">
+                    <div class="preview" id="previewCard${i+1}" onclick="openModal('${x}',${imageIndex},${i})">
                     <img
                         src="./images/${x}-${imageIndex}.jpg"
                         alt="Photo of a ${x}"
@@ -848,9 +858,45 @@ function createMenuGrid(x){
         }
             
     }
-    
+    gridContent +=`
+            <div class="button-reload" id="button-reload">
+              <svg
+                width="60"
+                height="60"
+                viewBox="0 0 60 60"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <rect
+                  x="0.5"
+                  y="0.5"
+                  width="59"
+                  height="59"
+                  rx="29.5"
+                  stroke="#665F55" />
+                <path
+                  d="M39.8883 31.5C39.1645 36.3113 35.013 40 30 40C24.4772 40 20 35.5228 20 30C20 24.4772 24.4772 20 30 20C34.1006 20 37.6248 22.4682 39.1679 26"
+                  stroke="#403F3D"
+                  stroke-linecap="round"
+                  stroke-linejoin="round" />
+                <path
+                  d="M35 26H39.4C39.7314 26 40 25.7314 40 25.4V21"
+                  stroke="#403F3D"
+                  stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg>
+            </div>`
     return grid.innerHTML = gridContent;
 }
+
+window.onclick = (e) => {
+  if (!e.target.matches(".modal")) {
+    if(coffee_modal.open) {
+      closeModal();
+    }
+  }
+}
+
+// coffee_modal.addEventListener('click', (e) => e.stopPropagation())
 
 coffeeSelector.addEventListener("click",(e)=>{
     e.preventDefault();
@@ -867,7 +913,7 @@ dessertSelector.addEventListener("click",(e)=>{
     createMenuGrid(dessertSelector.value)
 });
 
-navMenuButton.addEventListener("click",createMenuGrid(coffeeSelector.value))
+// navMenuButton.addEventListener("click",createMenuGrid(coffeeSelector.value))
 
 document.addEventListener('DOMContentLoaded', () => {
   showImage(indexValue);
@@ -906,4 +952,40 @@ function showImage(e){
   
   sliders[indexValue-1].style.background = "#665F55";
 }
+
+const media = matchMedia('(min-width: 768px)')
+
+media.addEventListener("change",()=>{
+  // window.alert("shit");
+  
+})
+
+function myFunction(media) {
+  if (media.matches) { // If media query matches
+    for (let i = 1;i<5;i++) {
+      let preview = document.getElementById(`previewCard${i}`)
+      preview.remove()
+  }
+
+
+  } 
+}
+
+myFunction(media);
+
+
+function openNavModal() {
+  nav_modal.classList.add("nav-modal-flex")
+  document.body.style.position = 'fixed';
+  document.body.style.top = `-${window.scrollY}px`;
+  nav_modal.showModal();
+}
+
+function closeNavModal() {
+  nav_modal.classList.remove("nav-modal-flex")
+  document.body.style.position = '';
+  document.body.style.top = '';
+  nav_modal.close();
+}
+
 
