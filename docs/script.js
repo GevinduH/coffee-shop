@@ -710,8 +710,9 @@ const nav_Open_CloseBtn = document.getElementById("nav-open-close")
 const nav_modal = document.querySelector('.nav-modal')
 var coffee_modal = document.querySelector('.modal')
 var indexValue = 1;
-
 let total;
+let slideInterval;
+
 function addToSize(value,i) {
   total = value+total;
   console.log(total)
@@ -888,57 +889,43 @@ function createMenuGrid(x){
     return grid.innerHTML = gridContent;
 }
 
-window.onclick = (e) => {
-  if (!e.target.matches(".modal")) {
-    if(coffee_modal.open) {
-      closeModal();
-    }
-  }
+showImage(indexValue);
+
+startInterval();
+
+
+function startInterval() {
+    slideInterval = setInterval(() => {
+    side_slide(1);
+  }, 3000);
 }
 
-// coffee_modal.addEventListener('click', (e) => e.stopPropagation())
-
-coffeeSelector.addEventListener("click",(e)=>{
-    e.preventDefault();
-    createMenuGrid(coffeeSelector.value)
-});
-
-teaSelector.addEventListener("click",(e)=>{
-    e.preventDefault();
-    createMenuGrid(teaSelector.value)
-});
-
-dessertSelector.addEventListener("click",(e)=>{
-    e.preventDefault();
-    createMenuGrid(dessertSelector.value)
-});
-
-// navMenuButton.addEventListener("click",createMenuGrid(coffeeSelector.value))
-
-document.addEventListener('DOMContentLoaded', () => {
-  showImage(indexValue);
-  
-  const rightBtn = document.querySelector('.right-btn');
-  const leftBtn = document.querySelector('.left-btn');
-  rightBtn.addEventListener('click', () => side_slide(1));
-  leftBtn.addEventListener('click', () => side_slide(-1));
-});
+function resetTime() {
+  clearInterval(slideInterval);
+  startInterval()
+}
 
 function btn_Slider(e) {
+  resetTime()
   showImage(indexValue = e)
 }
 
 function side_slide(e) {
-  indexValue += e
+  indexValue += e;
+  resetTime()
   showImage(indexValue)
 }
 
 function showImage(e){
-  let i;
+  // let i;
   const img = document.querySelectorAll(".slider-image");
   const sliders = document.querySelectorAll(".controls div")
-  if (e > img.length) {indexValue = 1};
-  if (e <  1) {indexValue = img.length}
+  if (e > img.length) {
+    indexValue = 1
+  };
+  if (e <  1) { 
+    indexValue = img.length
+  };
   
   img.forEach((img, i) => {
     img.style.transform = `translateX(${(i - (indexValue - 1)) * 100}%)`;
@@ -986,4 +973,17 @@ function closeNavModal() {
   nav_modal.close();
 }
 
+coffeeSelector.addEventListener("click",(e)=>{
+  e.preventDefault();
+  createMenuGrid(coffeeSelector.value)
+});
 
+teaSelector.addEventListener("click",(e)=>{
+  e.preventDefault();
+  createMenuGrid(teaSelector.value)
+});
+
+dessertSelector.addEventListener("click",(e)=>{
+  e.preventDefault();
+  createMenuGrid(dessertSelector.value)
+});
