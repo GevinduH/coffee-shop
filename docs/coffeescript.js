@@ -708,7 +708,9 @@ const menuButton = document.getElementById("coffee-menu")
 var coffee_modal = document.querySelector('.modal')
 const nav_modal = document.querySelector('.nav-modal')
 let total;
+let lastValue;
 
+// script for creating grids
 function createMenuGrid(x){
     let gridContent=""; 
     let imageIndex = 1;
@@ -750,12 +752,55 @@ dessertSelector.addEventListener("click",(e)=>{
 
 createMenuGrid(coffeeSelector.value)
 
-function addToSize(value,i) {
-    total = value+total;
-    document.querySelector('.total h3:last-child').innerText = `$${total.toFixed(2)}`;
-    return total
+// script for the  coffee-modal calculations
+function checkSizeS(value) {
+  value = Math.abs(value)
+  total = Math.abs(total)
+  console.log("🚀 ~ checkSizeS ~ total:", typeof total)
+  console.log("🚀 ~ addAdditives ~ value:", typeof value)
+  const sizeS = document.getElementById("size-s")
+  total -= lastValue
+  if (sizeS.checked == 1){
+    total = total+value;
+  }
+  lastValue = value
+  console.log("🚀 ~ checkSizeS ~ value:", value)
+  console.log("🚀 ~ checkSizeS ~ value:", lastValue)
+  document.querySelector('.total h3:last-child').innerText = `$${total.toFixed(2)}`;
+  console.log("🚀 ~ checkSizeS ~ total:", total)
+  return total
 }
- 
+  
+function checkSizeM(value) {
+  console.log("🚀 ~ checkSizeM ~ value:",typeof value)
+  value = Math.abs(value)
+  total = Math.abs(total)
+  const sizeM = document.getElementById("size-m")
+  total -= lastValue
+  if (sizeM.checked == 1){
+    total = total+value;
+  } 
+  lastValue = value
+  console.log("🚀 ~ checkSizeS ~ value:", value)
+  document.querySelector('.total h3:last-child').innerText = `$${total.toFixed(2)}`;
+  console.log("🚀 ~ checkSizeM ~ total:", total)
+  return total
+}
+
+function checkSizeL(value) {
+  value = Math.abs(value)
+  total = Math.abs(total)
+  const sizeL = document.getElementById("size-l")
+  total -= lastValue
+  if (sizeL.checked == 1){
+    total = total+value;
+  } 
+  lastValue = value
+  console.log("🚀 ~ checkSizeS ~ value:", value)
+  document.querySelector('.total h3:last-child').innerText = `$${total.toFixed(2)}`;
+  console.log("🚀 ~ checkSizeL ~ total:", total)
+  return total,lastValue
+}
 
 function additive1(value,i){
   console.log("🚀 ~ addAdditives ~ value:", value)
@@ -794,9 +839,10 @@ function additive3(value,i){
   return total
 }
 
-  
+//  script for creating/opening/closing modals 
 function createModal(x, imageIndex, i) {
-    total = parseInt(products[i].price);
+    total = Math.abs(products[i].price);
+    lastValue = Math.abs(products[i].sizes.s['add-price'])
     menuGrid.innerHTML += `
     <dialog class="modal">
         <div class="modal-container">
@@ -818,18 +864,21 @@ function createModal(x, imageIndex, i) {
                 <div class="modal-size">
                     <p class="Additives-p">Size</p>
                     <div class="Additives-button-set">
-                        <button class="modal-size-btn button" onclick="addToSize(${products[i].sizes.s['add-price']},'${i}')">
-                            <span class="coffee-size button">S</span>
-                            ${products[i].sizes.s.size}
-                        </button>
-                        <button class="modal-size-btn button" onclick="addToSize(${products[i].sizes.m['add-price']},'${i}')">
-                            <span class="coffee-size button">M</span> 
-                            ${products[i].sizes.m.size}
-                        </button>
-                        <button class="modal-size-btn button" onclick="addToSize(${products[i].sizes.l['add-price']},'${i}')">
-                            <span class="coffee-size button">L</span> 
-                            ${products[i].sizes.l.size}
-                        </button>
+                        <label class="modal-size-label button">
+                          <input type="radio" value="${products[i].sizes.s['add-price']}" name="Size" id="size-s" class="modal-size-btn button" onclick="checkSizeS(${products[i].sizes.s['add-price']})" checked>
+                              <span class="coffee-size button">S</span>
+                              ${products[i].sizes.s.size}
+                        </label>
+                        <label class="modal-size-label button">
+                          <input class="modal-size-btn button" type="radio" id="size-m" value="${products[i].sizes.m['add-price']}" name="Size" onclick="checkSizeM(${products[i].sizes.m['add-price']})">
+                              <span class="coffee-size button">M</span>
+                              ${products[i].sizes.m.size}
+                        </label>
+                        <label class="modal-size-label button">
+                          <input class="modal-size-btn button" type="radio" value="${products[i].sizes.l['add-price']}" name="Size" id="size-l" onclick="checkSizeL(${products[i].sizes.l['add-price']})">
+                              <span class="coffee-size button">L</span>
+                              ${products[i].sizes.l.size}
+                        </label>
                     </div>
                 </div>
                 <div class="modal-additives">
@@ -907,6 +956,7 @@ function openModal(x, imageIndex, i) {
     modal.showModal();
 }
 
+// script for the navigation modal
 function openNavModal() {
     nav_modal.classList.add("nav-modal-flex")
     document.body.style.position = 'fixed';
