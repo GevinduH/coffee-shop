@@ -2,16 +2,50 @@ const navMenuButton = document.getElementById("coffee-menu")
 const menuButton = document.getElementById("button-icon-burger")
 const nav_Open_CloseBtn = document.getElementById("nav-open-close")
 const nav_modal = document.querySelector('.nav-modal')
+const sliderContainer = document.getElementById('sliderContainer')
 var indexValue = 1;
 let slideInterval;
+let touchStartX = 0;
+let touchEndX = 0;
 
 showImage(indexValue);
 startInterval();
 
+
+
+sliderContainer.addEventListener('touchstart', (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+});
+
+sliderContainer.addEventListener('touchmove', (e) => {
+    touchEndX = e.changedTouches[0].screenX; 
+});
+
+sliderContainer.addEventListener('touchend', (e) => {
+    handleSwipe(); // Determine if the swipe was horizontal
+});
+
+function handleSwipe() {
+    const swipeDistance = touchEndX - touchStartX;
+
+    if (Math.abs(swipeDistance) > 50) {
+        if (swipeDistance > 0) {
+          resetTime()
+          side_slide(-1)
+            
+            
+        } else {
+          resetTime()
+          side_slide(1)
+        }
+    }
+}
+
+
 function startInterval() {
     slideInterval = setInterval(() => {
     side_slide(1);
-  }, 3000);
+  }, 5000);
 }
 
 function resetTime() {
@@ -52,7 +86,6 @@ function showImage(e){
   
   sliders[indexValue-1].style.background = "#665F55";
 }
-
 
 function openNavModal() {
   nav_modal.classList.add("nav-modal-flex")

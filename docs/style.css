@@ -104,10 +104,6 @@ footer#contacts {
     cursor: pointer;
 }
 
-.button:hover {
-    color:var(--light);
-}
-
 .button.menu {
     display: flex;
     flex-direction: row;
@@ -120,11 +116,6 @@ footer#contacts {
     border: none;
     margin-top: 40px;
     gap: 8px;
-}
-
-.button.menu svg:hover {
-    fill: var(--dark);
-    visibility:visible;
 }
 
 .appstore-btn, .playstore-btn {
@@ -219,15 +210,18 @@ ul.nav {
 
 
 /* menu section in the index.html */
-.menu-text {
-    padding-left: 20px;
+.button.menu:hover .btn.menu-svg {
+    display: inline;
+}
+
+.btn.menu-svg {
+    display: none;
 }
 
 .menu-text:hover {
     color: var(--dark);
     padding: 0;
 }
-
 
 /* font stylings */
 .caption {
@@ -1014,6 +1008,10 @@ section#mobile-app {
         object-fit: fill;
     }
 
+    .btn.menu-svg {
+        display: inline;
+    }
+
     /* favorite coffee section styling */
     .favorite-coffee.container {
         width: 688px;
@@ -1408,6 +1406,30 @@ section#mobile-app {
         border: none;
     }
 
+    p.alert-p.caption {
+        width: 310px;
+    }
+
+    .modal {
+        width: 342px;
+    }
+
+    .modal-container {
+        width: 342px;
+    }
+
+    .modal-description {
+        padding-left: 0;
+    }
+
+    hr.modal-hr {
+        width: 310px;
+    }
+
+    .box {
+        display: none;
+    }
+
     .nav-ul {
         display: flex;
         flex-direction: column;
@@ -1454,6 +1476,7 @@ section#mobile-app {
         height: 576px;
         overflow:hidden;
         align-self: center;
+        margin-right: -40px;
     }
 
     .slider.container {
