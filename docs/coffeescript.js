@@ -756,23 +756,17 @@ createMenuGrid(coffeeSelector.value)
 function checkSizeS(value) {
   value = Math.abs(value)
   total = Math.abs(total)
-  console.log("🚀 ~ checkSizeS ~ total:", typeof total)
-  console.log("🚀 ~ addAdditives ~ value:", typeof value)
   const sizeS = document.getElementById("size-s")
   total -= lastValue
   if (sizeS.checked == 1){
     total = total+value;
   }
   lastValue = value
-  console.log("🚀 ~ checkSizeS ~ value:", value)
-  console.log("🚀 ~ checkSizeS ~ value:", lastValue)
   document.querySelector('.total h3:last-child').innerText = `$${total.toFixed(2)}`;
-  console.log("🚀 ~ checkSizeS ~ total:", total)
   return total
 }
   
 function checkSizeM(value) {
-  console.log("🚀 ~ checkSizeM ~ value:",typeof value)
   value = Math.abs(value)
   total = Math.abs(total)
   const sizeM = document.getElementById("size-m")
@@ -781,9 +775,7 @@ function checkSizeM(value) {
     total = total+value;
   } 
   lastValue = value
-  console.log("🚀 ~ checkSizeS ~ value:", value)
   document.querySelector('.total h3:last-child').innerText = `$${total.toFixed(2)}`;
-  console.log("🚀 ~ checkSizeM ~ total:", total)
   return total
 }
 
@@ -796,14 +788,11 @@ function checkSizeL(value) {
     total = total+value;
   } 
   lastValue = value
-  console.log("🚀 ~ checkSizeS ~ value:", value)
   document.querySelector('.total h3:last-child').innerText = `$${total.toFixed(2)}`;
-  console.log("🚀 ~ checkSizeL ~ total:", total)
   return total,lastValue
 }
 
 function additive1(value,i){
-  console.log("🚀 ~ addAdditives ~ value:", value)
   const Additive1 = document.getElementById("Additives1")
   if (Additive1.checked == 1){
     total = total+value;
@@ -815,7 +804,6 @@ function additive1(value,i){
 }
 
 function additive2(value,i){
-  console.log("🚀 ~ addAdditives ~ value:", value)
   const Additive2 = document.getElementById("Additives2")
   if (Additive2.checked == 1){
     total = total+value;
@@ -827,7 +815,6 @@ function additive2(value,i){
 }
 
 function additive3(value,i){
-  console.log("🚀 ~ addAdditives ~ value:", value)
   const labelAdditive3 = document.getElementById("label-Additives3")
   const Additive3 = document.getElementById("Additives3")
   if (Additive3.checked == 1){
