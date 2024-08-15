@@ -748,7 +748,7 @@ dessertSelector.addEventListener("click",(e)=>{
     createMenuGrid(dessertSelector.value)
 });
 
-menuButton.addEventListener("click",createMenuGrid(coffeeSelector.value))
+createMenuGrid(coffeeSelector.value)
 
 function addToSize(value,i) {
     total = value+total;
@@ -756,11 +756,44 @@ function addToSize(value,i) {
     return total
 }
  
-function addAdditives(value,i){
+
+function additive1(value,i){
+  console.log("🚀 ~ addAdditives ~ value:", value)
+  const Additive1 = document.getElementById("Additives1")
+  if (Additive1.checked == 1){
     total = total+value;
-    document.querySelector('.total h3:last-child').innerText = `$${total.toFixed(2)}`;
-    return total;
+  } else {
+    total = total-value;
+  }
+  document.querySelector('.total h3:last-child').innerText = `$${total.toFixed(2)}`;
+  return total
 }
+
+function additive2(value,i){
+  console.log("🚀 ~ addAdditives ~ value:", value)
+  const Additive2 = document.getElementById("Additives2")
+  if (Additive2.checked == 1){
+    total = total+value;
+  } else {
+    total = total-value;
+  }
+  document.querySelector('.total h3:last-child').innerText = `$${total.toFixed(2)}`;
+  return total
+}
+
+function additive3(value,i){
+  console.log("🚀 ~ addAdditives ~ value:", value)
+  const labelAdditive3 = document.getElementById("label-Additives3")
+  const Additive3 = document.getElementById("Additives3")
+  if (Additive3.checked == 1){
+    
+    total = total+value;
+  } else {
+    total = total-value;
+  }document.querySelector('.total h3:last-child').innerText = `$${total.toFixed(2)}`;
+  return total
+}
+
   
 function createModal(x, imageIndex, i) {
     total = parseInt(products[i].price);
@@ -800,13 +833,14 @@ function createModal(x, imageIndex, i) {
                     </div>
                 </div>
                 <div class="modal-additives">
-                    <p class="Additives-p">Additives</p>
-                    <div class="Additives-button-set">
-                        ${products[i].additives.map((additive,index) => `
-                          <button class="modal-Additives-btn button" id="Additives-${index+1}" onclick="addAdditives(${additive["add-price"]},'${i}')">
-                           <span class="coffee-Additives button">${index+1}</span> ${additive.name}
-                        </button>`)}
-                    </div>
+                  <p class="Additives-p">Additives</p>
+                  <div class="Additives-button-set">
+                      ${products[i].additives.map((additive, index) => `
+                          <label class="modal-Additives-label button" id="label-Additives${index+1}">
+                              <input type="checkbox" class="modal-Additives-input" id="Additives${index+1}" name="${additive.name}" value="${additive['add-price']}" onclick="additive${index+1}(${additive['add-price']},'${i}')">
+                              <span class="coffee-Additives button">${index+1}</span> ${additive.name}
+                          </label>`).join('')}
+                  </div>
                 </div>
                 <div class="total">
                       <h3>Total:</h3>
