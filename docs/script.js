@@ -1,9 +1,8 @@
 const navMenuButton = document.getElementById("coffee-menu")
 const menuButton = document.getElementById("button-icon-burger")
-const nav_Open_CloseBtn = document.getElementById("nav-open-close")
-const nav_modal = document.querySelector('.nav-modal')
+const navModal = document.querySelector('.nav-modal')
 const sliderContainer = document.getElementById('sliderContainer')
-var indexValue = 1;
+let indexValue = 1;
 let slideInterval;
 let touchStartX = 0;
 let touchEndX = 0;
@@ -83,16 +82,15 @@ function showImage(e){
 }
 
 function openNavModal() {
-  nav_modal.classList.add("nav-modal-flex")
+  navModal.classList.add("nav-modal-flex")
   document.body.style.position = 'fixed';
   document.body.style.top = `-${window.scrollY}px`;
-  nav_modal.showModal();
+  navModal.showModal();
 }
 
 function closeNavModal() {
-  nav_modal.classList.remove("nav-modal-flex")
+  navModal.classList.remove("nav-modal-flex")
   document.body.style.position = '';
   document.body.style.top = '';
-  nav_modal.close();
+  navModal.close();
 }
-
