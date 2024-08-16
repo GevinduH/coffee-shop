@@ -9,12 +9,13 @@ const navModal = document.querySelector('.nav-modal')
 let total;
 let lastValue;
 let products;
+let productsLength;
 
 // reading the material.JSON file
 async function fetchData() {
   const response = await fetch("./material.json");
   products = await response.json();
-  console.log(products);
+  productsLength = products.length;
   createMenuGrid(coffeeSelector.value)
 }
 
@@ -24,7 +25,7 @@ fetchData()
 function createMenuGrid(x){
     let gridContent=""; 
     let imageIndex = 1;
-    for (let i=0;i<products.length;i++) {
+    for (let i=0;i<productsLength;i++) {
         if (products[i].category === x) { 
             gridContent += ` 
                     <div class="preview" id="previewCard${i+1}" onclick="openModal('${x}',${imageIndex},${i})">
