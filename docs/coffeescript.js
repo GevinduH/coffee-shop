@@ -4,8 +4,8 @@ const dessertSelector = document.getElementById("dessert-Selector")
 const grid = document.getElementById("menu-grid");
 const menuGrid = document.getElementById("menu-grid")
 const menuButton = document.getElementById("coffee-menu")
-var coffee_modal = document.querySelector('.modal')
-const nav_modal = document.querySelector('.nav-modal')
+const coffee_modal = document.getElementById('.modal')
+const navModal = document.querySelector('.nav-modal')
 let total;
 let lastValue;
 let products;
@@ -140,7 +140,7 @@ function createModal(x, imageIndex, i) {
     total = Math.abs(products[i].price);
     lastValue = Math.abs(products[i].sizes.s['add-price'])
     menuGrid.innerHTML += `
-    <dialog class="modal">
+    <dialog class="modal" id="modal">
         <div class="modal-container">
             <div class="box">
                 <img
@@ -254,16 +254,16 @@ function openModal(x, imageIndex, i) {
 
 // script for the navigation modal
 function openNavModal() {
-    nav_modal.classList.add("nav-modal-flex")
+    navModal.classList.add("nav-modal-flex")
     document.body.style.position = 'fixed';
     document.body.style.top = `-${window.scrollY}px`;
-    nav_modal.showModal();
+    navModal.showModal();
 }
   
 function closeNavModal() {
-    nav_modal.classList.remove("nav-modal-flex")
+    navModal.classList.remove("nav-modal-flex")
     document.body.style.position = '';
     document.body.style.top = '';
-    nav_modal.close();
+    navModal.close();
 }
   
