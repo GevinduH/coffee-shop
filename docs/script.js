@@ -11,8 +11,7 @@ let touchEndX = 0;
 showImage(indexValue);
 startInterval();
 
-
-
+// Touch events for slider
 sliderContainer.addEventListener('touchstart', (e) => {
     touchStartX = e.changedTouches[0].screenX;
 });
@@ -22,7 +21,7 @@ sliderContainer.addEventListener('touchmove', (e) => {
 });
 
 sliderContainer.addEventListener('touchend', (e) => {
-    handleSwipe(); // Determine if the swipe was horizontal
+    handleSwipe();
 });
 
 function handleSwipe() {
@@ -73,17 +72,13 @@ function showImage(e){
   if (e <  1) { 
     indexValue = img.length
   };
-  
   img.forEach((img, i) => {
     img.style.transform = `translateX(${(i - (indexValue - 1)) * 100}%)`;
   });
-
   sliders.forEach((slider, i) => {
     slider.style.background = "#C1B6AD";
   });
-
   img[indexValue-1].style.display = "block";
-  
   sliders[indexValue-1].style.background = "#665F55";
 }
 
