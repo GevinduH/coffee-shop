@@ -1,13 +1,10 @@
-const coffeeSelector = document.getElementById("coffee-Selector");
-const teaSelector = document.getElementById("tea-Selector");
-const dessertSelector = document.getElementById("dessert-Selector");
-const grid = document.getElementById("menu-grid");
-const menuGrid = document.getElementById("menu-grid");
-const menuButton = document.getElementById("coffee-menu");
-const coffee_modal = document.getElementById(".modal");
-const navModal = document.querySelector(".nav-modal");
+const coffeeSelector = document.getElementById("coffeeSelector");
+const teaSelector = document.getElementById("teaSelector");
+const dessertSelector = document.getElementById("dessertSelector");
+const menuGrid = document.getElementById("menuGrid");
+const menuButton = document.getElementById("coffeeMenu");
+const navModal = document.getElementById("navModal");
 let total;
-let lastValue;
 let products;
 let productsLength;
 
@@ -44,7 +41,7 @@ function createMenuGrid(x) {
       imageIndex++;
     }
   }
-  return (grid.innerHTML = gridContent);
+  return (menuGrid.innerHTML = gridContent);
 }
 
 coffeeSelector.addEventListener("click", (e) => {
@@ -63,90 +60,20 @@ dessertSelector.addEventListener("click", (e) => {
 });
 
 // script for the  coffee-modal calculations
-function checkSizeS(value) {
-  value = Math.abs(value);
+function addSize(value) {
   total = Math.abs(total);
-  const sizeS = document.getElementById("size-s");
-  total -= lastValue;
-  if (sizeS.checked === true) {
-    total += value;
-  }
-  lastValue = value;
-  document.querySelector(".total h3:last-child").innerText = `$${total.toFixed(
+  value = Math.abs(value);
+  value += total;
+  document.querySelector(".total h3:last-child").innerText = `$${value.toFixed(
     2
   )}`;
-  return total;
 }
 
-function checkSizeM(value) {
+function addAdditive(value, id) {
   value = Math.abs(value);
   total = Math.abs(total);
-  const sizeM = document.getElementById("size-m");
-  total -= lastValue;
-  if (sizeM.checked === true) {
-    total += value;
-  }
-  lastValue = value;
-  document.querySelector(".total h3:last-child").innerText = `$${total.toFixed(
-    2
-  )}`;
-  return total;
-}
-
-function checkSizeL(value) {
-  value = Math.abs(value);
-  total = Math.abs(total);
-  const sizeL = document.getElementById("size-l");
-  total -= lastValue;
-  if (sizeL.checked === true) {
-    total += value;
-  }
-  lastValue = value;
-  document.querySelector(".total h3:last-child").innerText = `$${total.toFixed(
-    2
-  )}`;
-  return total, lastValue;
-}
-
-function additive1(value, i) {
-  value = Math.abs(value);
-  total = Math.abs(total);
-  const additive1 = document.getElementById("additives1");
-  if (additive1.checked === true) {
-    total += value;
-  } else {
-    total -= value;
-  }
-  document.querySelector(".total h3:last-child").innerText = `$${total.toFixed(
-    2
-  )}`;
-  return total;
-}
-
-function additive2(value, i) {
-  value = Math.abs(value);
-  total = Math.abs(total);
-  const additive2 = document.getElementById("additives2");
-  if (additive2.checked === true) {
-    total += value;
-  } else {
-    total -= value;
-  }
-  document.querySelector(".total h3:last-child").innerText = `$${total.toFixed(
-    2
-  )}`;
-  return total;
-}
-
-function additive3(value, i) {
-  value = Math.abs(value);
-  total = Math.abs(total);
-  const additive3 = document.getElementById("additives3");
-  if (additive3.checked === true) {
-    total += value;
-  } else {
-    total -= value;
-  }
+  const additive = document.getElementById(`${id}`);
+  total = total + (additive.checked === true ? value : -value);
   document.querySelector(".total h3:last-child").innerText = `$${total.toFixed(
     2
   )}`;
@@ -156,18 +83,17 @@ function additive3(value, i) {
 //  script for creating/opening/closing modals
 function createModal(x, imageIndex, i) {
   total = products[i].price;
-  lastValue = Math.abs(products[i].sizes.s["add-price"]);
   menuGrid.innerHTML += `
     <dialog class="modal" id="modal">
-        <div class="modal-container">
+        <div class="modalContainer">
             <div class="box">
                 <img
                     src="./images/${x}-${imageIndex}.jpg"
                     alt="Photo of a ${x}"
                     class="preview image" />
             </div>
-            <div class="modal-description">
-                <div class="modal-title">
+            <div class="modalDescription">
+                <div class="modalTitle">
                     <h3 style="margin-top: 0; margin-bottom: 15px">
                         ${products[i].name}
                     </h3>
@@ -175,68 +101,66 @@ function createModal(x, imageIndex, i) {
                         ${products[i].description}
                     </p>
                 </div>
-                <div class="modal-size">
-                    <p class="additives-p">Size</p>
-                    <div class="additives-button-set">
+                <div class="modalSize">
+                    <p class="additivesP">Size</p>
+                    <div class="additivesButtonSet">
                         <div>
                           <input type="radio" value="${
                             products[i].sizes.s["add-price"]
                           }" name="Size"
-                          id="size-s" class="modal-size-btn button" onclick="checkSizeS(${
+                          id="size-s" class="modalSizeBtn button" onclick="addSize(${
                             products[i].sizes.s["add-price"]
                           })" checked>
-                          <label class="modal-size-label button">
-                            <span class="coffee-size button">S</span>
+                          <label class="modalSizeLabel button">
+                            <span class="coffeeSize button">S</span>
                             ${products[i].sizes.s.size}
                           </label>
                         </div>
 
                         <div>
-                          <input class="modal-size-btn button" type="radio" id="size-m" value="${
+                          <input class="modalSizeBtn button" type="radio" id="size-m" value="${
                             products[i].sizes.m["add-price"]
-                          }" name="Size" onclick="checkSizeM(${
+                          }" name="Size" onclick="addSize(${
     products[i].sizes.m["add-price"]
   }
                           )">
-                          <label class="modal-size-label button">
-                            <span class="coffee-size button">M</span>
+                          <label class="modalSizeLabel button">
+                            <span class="coffeeSize button">M</span>
                             ${products[i].sizes.m.size}
                           </label>
                         </div>
 
                         <div>
-                          <input class="modal-size-btn button" type="radio" value="${
+                          <input class="modalSizeBtn button" type="radio" value="${
                             products[i].sizes.l["add-price"]
                           }"
                            name="Size" id="size-l"
-                          onclick="checkSizeL(${
+                          onclick="addSize(${
                             products[i].sizes.l["add-price"]
                           })">
-                          <label class="modal-size-label button">
+                          <label class="modalSizeLabel button">
                             <span class="coffee-size button">L</span>
                             ${products[i].sizes.l.size}
                           </label>
                         </div>
                     </div>
                 </div>
-                <div class="modal-additives">
-                  <p class="additives-p">Additives</p>
-                  <div class="additives-button-set">
+                <div class="modalAdditives">
+                  <p class="additivesP">Additives</p>
+                  <div class="additivesButtonSet">
                       ${products[i].additives
                         .map(
                           (additive, index) => `
                           <div>
-                            <input type="checkbox" class="modal-Additives-input" id="additives${
+                            <input type="checkbox" class="modalAdditivesInput" id="additives${
                               index + 1
                             }" name="${additive.name}" value="${
                             additive["add-price"]
-                          }" onclick="additive${index + 1}(${
-                            additive["add-price"]
-                          },'${i}')">
-                              <label class="modal-Additives-label button" id="label-Additives${
+                          }" onclick="addAdditive(${additive["add-price"]},id)">
+                              <label class="modalAdditivesLabel button" id="label-Additives${
                                 index + 1
                               }">
-                                <span class="coffee-Additives button">
+                                <span class="coffeeAdditives button">
                                 ${index + 1}
                                 </span> ${additive.name}
                               </label>
@@ -249,7 +173,7 @@ function createModal(x, imageIndex, i) {
                       <h3>Total:</h3>
                       <h3>$${total || products[i].price}</h3>
                     </div>
-                    <hr class="modal-hr" />
+                    <hr class="modalHR" />
                     <div class="alert">
                       <div>
                         <svg
@@ -282,13 +206,13 @@ function createModal(x, imageIndex, i) {
                           </defs>
                         </svg>
                       </div>
-                      <p class="alert-p caption">
+                      <p class="alertP caption">
                         The cost is not final. Download our mobile app to see the
                         final price and place your order. Earn loyalty points and
                         enjoy your favorite coffee with up to 20% discount.
                       </p>
                     </div> 
-                <button class="modal-Close button" onclick="closeModal()">Close</button>
+                <button class="modalClose button" onclick="closeModal()">Close</button>
             </div>
         </div>
     </dialog>`;
@@ -312,14 +236,14 @@ function openModal(x, imageIndex, i) {
 
 // script for the navigation modal
 function openNavModal() {
-  navModal.classList.add("nav-modal-flex");
+  navModal.classList.add("navModalFlex");
   document.body.style.position = "fixed";
   document.body.style.top = `-${window.scrollY}px`;
   navModal.showModal();
 }
 
 function closeNavModal() {
-  navModal.classList.remove("nav-modal-flex");
+  navModal.classList.remove("navModalFlex");
   document.body.style.position = "";
   document.body.style.top = "";
   navModal.close();
