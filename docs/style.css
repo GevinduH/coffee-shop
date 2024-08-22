@@ -17,6 +17,7 @@ body {
   font-weight: 400;
   line-height: 150%;
   margin: 20px 40px 40px 40px;
+  display: flex;
 }
 
 h1 {
@@ -345,9 +346,9 @@ section#favorite-coffee {
   margin-top: 100px;
 }
 
-.image.Frappuccino,
-.image.Macchiato,
-.image.Ice-coffee {
+.image.frappuccino,
+.image.macchiato,
+.image.iceCoffee {
   width: 480px;
   height: 480px;
   object-fit: contain;
@@ -652,13 +653,13 @@ div.preview {
   border-radius: 40px;
 }
 
-.modal-container {
+.modalContainer {
   display: flex;
   flex-direction: row;
   width: 768px;
 }
 
-.modal-description {
+.modalDescription {
   display: flex;
   flex-direction: column;
   padding-left: 20px;
@@ -670,7 +671,7 @@ div.preview {
   background: rgba(64, 63, 61, 0.8);
 }
 
-.modal-size-btn.button {
+.modalSizeBtn.button {
   background-color: var(--light);
   color: var(--dark);
   min-width: 117px;
@@ -680,7 +681,7 @@ div.preview {
   border-radius: 100px;
 }
 
-.modal-Additives-label.button {
+.modalAdditivesLabel.button {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -696,7 +697,7 @@ div.preview {
   border-radius: 100px;
 }
 
-.modal-size-label.button {
+.modalSizeLabel.button {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -712,93 +713,91 @@ div.preview {
   border-radius: 100px;
 }
 
-.modal-size-label.button:hover {
+.modalSizeLabel.button:hover {
   background-color: var(--container);
   color: var(--light);
 }
 
-.coffee-size {
+.coffeeSize {
   background-color: #c1b6ad;
   padding: 2px 9px;
   border-radius: 100px;
 }
 
-.modal-size-label.button:hover .coffee-size {
+.modalSizeLabel.button:hover .coffeeSize {
   background: #e1d4c9;
   color: var(--dark);
 }
 
-label.modal-size-label + input[type="radio"]:checked {
+.modalAdditivesInput {
+  min-width: 130px;
+  max-width: 141px;
+  height: 46px;
+}
+
+input[type="radio"]:checked ~ label.modalSizeLabel {
   background: var(--container);
   color: var(--light);
 }
 
-input[type="radio"]:checked + .coffee-size {
+input[type="radio"]:checked ~ label.modalSizeLabel > span.coffeeSize {
   background: #e1d4c9;
   color: var(--dark);
 }
 
-.modal-size-btn:focus {
+input[type="checkbox"]:checked ~ label.modalAdditivesLabel {
+  background: var(--container);
+  color: var(--light);
+}
+
+input[type="checkbox"]:checked
+  ~ label.modalAdditivesLabel
+  > span.coffeeAdditives {
+  background: #e1d4c9;
+  color: var(--dark);
+}
+
+.modalSizeBtn:focus {
   background-color: var(--container);
   color: var(--light);
 }
 
-.modal-size-btn:focus .coffee-size {
+.modalSizeBtn:focus .coffeeSize {
   background: #e1d4c9;
   color: var(--dark);
 }
 
-.modal-size-btn:hover .coffee-size {
+.modalSizeBtn:hover .coffeeSize {
   background: #e1d4c9;
   color: var(--dark);
 }
 
-.modal-size-btn:active .coffee-size {
-  background: #e1d4c9;
-  color: var(--dark);
-}
-
-.modal-Additives-input,
-.modal-size-btn.button {
+.modalAdditivesInput,
+.modalSizeBtn.button {
   position: absolute;
   opacity: 0;
   cursor: pointer;
 }
 
-.modal-Additives-label.button:hover {
+.modalAdditivesLabel.button:hover {
   background-color: var(--container);
   color: var(--light);
 }
 
-.modal-Additives-checked {
-  background-color: var(--container);
-  color: var(--light);
-}
-
-.coffee-Additives.button {
+.coffeeAdditives.button {
   background-color: #c1b6ad;
   padding: 2px 9px;
   border-radius: 100px;
 }
 
-.modal-Additives-label.button:focus {
+.modalAdditivesLabel.button:focus {
   background-color: var(--container);
   color: var(--light);
 }
 
-.modal-Additives-label.button:hover .coffee-Additives.button {
+.modalAdditivesLabel.button:hover .coffeeAdditives.button {
   background-color: #e1d4c9;
   color: var(--dark);
-}
-
-input[type="checkbox"]:checked + .coffee-Additives.button {
-  background-color: #e1d4c9;
-  color: var(--dark);
-}
-
-.modal-Additives-label input[type="checkbox"]:checked {
-  background-color: #665f55;
-  color: var(--light);
 }
 
 .total {
@@ -814,18 +813,18 @@ input[type="checkbox"]:checked + .coffee-Additives.button {
   padding-bottom: 12px;
 }
 
-.alert-p {
+.alertP {
   margin-top: 0;
   padding: 0;
   text-align: justify;
 }
 
-.modal-hr {
+.modalHR {
   border-top: 1px solid #c1b6ad;
   margin: 0;
 }
 
-.modal-Close {
+.modalClose {
   background: var(--light);
   border: 1px solid #c1b6ad;
   border-radius: 100px;
@@ -833,15 +832,15 @@ input[type="checkbox"]:checked + .coffee-Additives.button {
   height: 44px;
 }
 
-.modal-Close:hover {
+.modalClose:hover {
   color: var(--dark);
 }
 
-.Additives-p {
+.additivesP {
   margin-bottom: 10px;
 }
 
-.Additives-button-set {
+.additivesButtonSet {
   gap: 8px;
   display: flex;
 }
@@ -937,17 +936,17 @@ section#mobile-app {
     display: block;
   }
 
-  .nav-modal {
+  .navModal {
     width: 688px;
     height: 100vh;
     background-color: #e1d4c9;
   }
 
-  .nav-modal::backdrop {
+  .navModal::backdrop {
     background-color: var(--light);
   }
 
-  .nav-modal-flex {
+  .navModalFlex {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -961,7 +960,7 @@ section#mobile-app {
     padding-left: 0;
   }
 
-  .nav-modal-div {
+  .navModalDiv {
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -1011,9 +1010,9 @@ section#mobile-app {
   .favorite-coffee.container {
     width: 688px;
   }
-  .image.Frappuccino,
-  .image.Macchiato,
-  .image.Ice-coffee {
+  .image.frappuccino,
+  .image.macchiato,
+  .image.iceCoffee {
     width: 480px;
     height: 480px;
     object-fit: contain;
@@ -1071,19 +1070,19 @@ section#mobile-app {
     height: 626px;
   }
 
-  .modal-container {
+  .modalContainer {
     width: 656px;
   }
 
-  .modal-title {
+  .modalTitle {
     width: 326px;
   }
 
-  .modal-size {
+  .modalSize {
     width: 326px;
   }
 
-  .modal-size-btn.button {
+  .modalSizeBtn.button {
     background-color: var(--light);
     color: var(--dark);
     min-width: 117px;
@@ -1093,37 +1092,37 @@ section#mobile-app {
     border-radius: 100px;
   }
 
-  .coffee-size {
+  .coffeeSize {
     background-color: #c1b6ad;
     border-radius: 100px;
   }
 
-  .modal-size-btn:hover {
+  .modalSizeBtn:hover {
     background-color: var(--container);
     color: var(--light);
   }
 
-  .modal-size-btn:focus {
+  .modalSizeBtn:focus {
     background-color: var(--container);
     color: var(--light);
   }
 
-  .modal-size-btn:focus .coffee-size {
+  .modalSize-Btn:focus .coffeeSize {
     background: #e1d4c9;
     color: var(--dark);
   }
 
-  .modal-size-btn:hover .coffee-size {
+  .modalSizeBtn:hover .coffeeSize {
     background: #e1d4c9;
     color: var(--dark);
   }
 
-  .modal-size-btn:active .coffee-size {
+  .modalSizeBtn:active .coffeeSize {
     background: #e1d4c9;
     color: var(--dark);
   }
 
-  .modal-Additives-btn.button {
+  .modalAdditivesBtn.button {
     background-color: var(--light);
     color: var(--dark);
     max-width: 141px;
@@ -1133,33 +1132,33 @@ section#mobile-app {
     border-radius: 100px;
   }
 
-  .coffee-Additives {
+  .coffeeAdditives {
     background-color: #c1b6ad;
     padding: 6px 9.75px;
     border-radius: 100px;
   }
 
-  .modal-Additives-btn:hover {
+  .modalAdditivesBtn:hover {
     background-color: var(--container);
     color: var(--light);
   }
 
-  .modal-Additives-btn:focus {
+  .modalAdditivesBtn:focus {
     background-color: var(--container);
     color: var(--light);
   }
 
-  .modal-Additives-btn:focus .coffee-Additives {
+  .modalAdditivesBtn:focus .coffeeAdditives {
     background-color: #e1d4c9;
     color: var(--light);
   }
 
-  .modal-Additives-btn:hover .coffee-Additives {
+  .modalAdditivesBtn:hover .coffeeAdditives {
     background-color: #e1d4c9;
     color: var(--dark);
   }
 
-  .modal-Additives-btn:active .coffee-Additives {
+  .modalAdditivesBtn:active .coffeeAdditives {
     background-color: #e1d4c9;
     color: var(--dark);
   }
@@ -1177,18 +1176,18 @@ section#mobile-app {
     padding-bottom: 12px;
   }
 
-  .alert-p {
+  .alertP {
     margin-top: 0;
     padding: 0;
     text-align: justify;
   }
 
-  .modal-hr {
+  .modalHR {
     border-top: 1px solid #c1b6ad;
     margin: 0;
   }
 
-  .modal-Close {
+  .modalClose {
     background: var(--light);
     border: 1px solid #c1b6ad;
     border-radius: 100px;
@@ -1196,15 +1195,15 @@ section#mobile-app {
     height: 44px;
   }
 
-  .modal-Close:hover {
+  .modalClose:hover {
     color: var(--dark);
   }
 
-  .Additives-p {
+  .additivesP {
     margin-bottom: 10px;
   }
 
-  .Additives-button-set {
+  .additivesButtonSet {
     width: 326px;
     gap: 8px;
     display: flex;
@@ -1381,24 +1380,24 @@ section#mobile-app {
     display: block;
   }
 
-  .nav-modal {
+  .navModal {
     width: 348px;
     height: 100vh;
     background-color: #e1d4c9;
   }
 
-  .nav-modal::backdrop {
+  .navModal::backdrop {
     background-color: var(--light);
   }
 
-  .nav-modal-flex {
+  .navModalFlex {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     border: none;
   }
 
-  p.alert-p.caption {
+  p.alertP.caption {
     width: 310px;
   }
 
@@ -1406,15 +1405,15 @@ section#mobile-app {
     width: 342px;
   }
 
-  .modal-container {
+  .modalContainer {
     width: 342px;
   }
 
-  .modal-description {
+  .modalDescription {
     padding-left: 0;
   }
 
-  hr.modal-hr {
+  hr.modalHR {
     width: 310px;
   }
 
@@ -1429,7 +1428,7 @@ section#mobile-app {
     padding-left: 0;
   }
 
-  .nav-modal-div {
+  .navModalDiv {
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -1455,9 +1454,9 @@ section#mobile-app {
     width: 348px;
   }
 
-  .image.Frappuccino,
-  .image.Macchiato,
-  .image.Ice-coffee {
+  .image.frappuccino,
+  .image.macchiato,
+  .image.iceCoffee {
     width: 348px;
     height: 348px;
     object-fit: contain;

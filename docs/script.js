@@ -1,6 +1,6 @@
 const navMenuButton = document.getElementById("coffee-menu");
 const menuButton = document.getElementById("button-icon-burger");
-const navModal = document.querySelector(".nav-modal");
+const navModal = document.getElementById("navModal");
 const sliderContainer = document.getElementById("sliderContainer");
 let indexValue = 1;
 let slideInterval;
@@ -29,17 +29,17 @@ function handleSwipe() {
   if (Math.abs(swipeDistance) > 50) {
     if (swipeDistance > 0) {
       resetTime();
-      side_slide(-1);
+      sideSlide(-1);
     } else {
       resetTime();
-      side_slide(1);
+      sideSlide(1);
     }
   }
 }
 
 function startInterval() {
   slideInterval = setInterval(() => {
-    side_slide(1);
+    sideSlide(1);
   }, 5000);
 }
 
@@ -48,12 +48,12 @@ function resetTime() {
   startInterval();
 }
 
-function btn_Slider(e) {
+function btnSlider(e) {
   resetTime();
   showImage((indexValue = e));
 }
 
-function side_slide(e) {
+function sideSlide(e) {
   indexValue += e;
   resetTime();
   showImage(indexValue);
@@ -79,14 +79,14 @@ function showImage(e) {
 }
 
 function openNavModal() {
-  navModal.classList.add("nav-modal-flex");
+  navModal.classList.add("navModalFlex");
   document.body.style.position = "fixed";
   document.body.style.top = `-${window.scrollY}px`;
   navModal.showModal();
 }
 
 function closeNavModal() {
-  navModal.classList.remove("nav-modal-flex");
+  navModal.classList.remove("navModalFlex");
   document.body.style.position = "";
   document.body.style.top = "";
   navModal.close();
