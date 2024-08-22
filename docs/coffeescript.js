@@ -111,6 +111,8 @@ function checkSizeL(value) {
 }
 
 function additive1(value, i) {
+  value = Math.abs(value);
+  total = Math.abs(total);
   const Additive1 = document.getElementById("Additives1");
   if (Additive1.checked == 1) {
     total = total + value;
@@ -124,6 +126,8 @@ function additive1(value, i) {
 }
 
 function additive2(value, i) {
+  value = Math.abs(value);
+  total = Math.abs(total);
   const Additive2 = document.getElementById("Additives2");
   if (Additive2.checked == 1) {
     total = total + value;
@@ -137,7 +141,8 @@ function additive2(value, i) {
 }
 
 function additive3(value, i) {
-  const labelAdditive3 = document.getElementById("label-Additives3");
+  value = Math.abs(value);
+  total = Math.abs(total);
   const Additive3 = document.getElementById("Additives3");
   if (Additive3.checked == 1) {
     total = total + value;
@@ -175,33 +180,45 @@ function createModal(x, imageIndex, i) {
                 <div class="modal-size">
                     <p class="Additives-p">Size</p>
                     <div class="Additives-button-set">
-                        <label class="modal-size-label button">
+                        <div>
                           <input type="radio" value="${
                             products[i].sizes.s["add-price"]
-                          }" name="Size" id="size-s" class="modal-size-btn button" onclick="checkSizeS(${
-    products[i].sizes.s["add-price"]
-  })" checked>
-                              <span class="coffee-size button">S</span>
-                              ${products[i].sizes.s.size}
-                        </label>
-                        <label class="modal-size-label button">
+                          }" name="Size"
+                          id="size-s" class="modal-size-btn button" onclick="checkSizeS(${
+                            products[i].sizes.s["add-price"]
+                          })" checked>
+                          <label class="modal-size-label button">
+                            <span class="coffee-size button">S</span>
+                            ${products[i].sizes.s.size}
+                          </label>
+                        </div>
+
+                        <div>
                           <input class="modal-size-btn button" type="radio" id="size-m" value="${
                             products[i].sizes.m["add-price"]
                           }" name="Size" onclick="checkSizeM(${
     products[i].sizes.m["add-price"]
-  })">
-                              <span class="coffee-size button">M</span>
-                              ${products[i].sizes.m.size}
-                        </label>
-                        <label class="modal-size-label button">
+  }
+                          )">
+                          <label class="modal-size-label button">
+                            <span class="coffee-size button">M</span>
+                            ${products[i].sizes.m.size}
+                          </label>
+                        </div>
+
+                        <div>
                           <input class="modal-size-btn button" type="radio" value="${
                             products[i].sizes.l["add-price"]
-                          }" name="Size" id="size-l" onclick="checkSizeL(${
-    products[i].sizes.l["add-price"]
-  })">
-                              <span class="coffee-size button">L</span>
-                              ${products[i].sizes.l.size}
-                        </label>
+                          }"
+                           name="Size" id="size-l"
+                          onclick="checkSizeL(${
+                            products[i].sizes.l["add-price"]
+                          })">
+                          <label class="modal-size-label button">
+                            <span class="coffee-size button">L</span>
+                            ${products[i].sizes.l.size}
+                          </label>
+                        </div>
                     </div>
                 </div>
                 <div class="modal-additives">
@@ -210,20 +227,22 @@ function createModal(x, imageIndex, i) {
                       ${products[i].additives
                         .map(
                           (additive, index) => `
-                          <label class="modal-Additives-label button" id="label-Additives${
-                            index + 1
-                          }">
-                              <input type="checkbox" class="modal-Additives-input" id="Additives${
-                                index + 1
-                              }" name="${additive.name}" value="${
+                          <div>
+                            <input type="checkbox" class="modal-Additives-input" id="Additives${
+                              index + 1
+                            }" name="${additive.name}" value="${
                             additive["add-price"]
                           }" onclick="additive${index + 1}(${
                             additive["add-price"]
                           },'${i}')">
-                              <span class="coffee-Additives button">${
+                              <label class="modal-Additives-label button" id="label-Additives${
                                 index + 1
-                              }</span> ${additive.name}
-                          </label>`
+                              }">
+                                <span class="coffee-Additives button">
+                                ${index + 1}
+                                </span> ${additive.name}
+                              </label>
+                          </div>`
                         )
                         .join("")}
                   </div>

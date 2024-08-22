@@ -17,6 +17,7 @@ body {
   font-weight: 400;
   line-height: 150%;
   margin: 20px 40px 40px 40px;
+  display: flex;
 }
 
 h1 {
@@ -728,12 +729,32 @@ div.preview {
   color: var(--dark);
 }
 
-label.modal-size-label + input[type="radio"]:checked {
+.modal-Additives-input {
+  min-width: 130px;
+  max-width: 141px;
+  height: 46px;
+}
+
+/* new style */
+
+input[type="radio"]:checked ~ label.modal-size-label {
   background: var(--container);
   color: var(--light);
 }
 
-input[type="radio"]:checked + .coffee-size {
+input[type="radio"]:checked ~ label.modal-size-label > span.coffee-size {
+  background: #e1d4c9;
+  color: var(--dark);
+}
+
+input[type="checkbox"]:checked ~ label.modal-Additives-label {
+  background: var(--container);
+  color: var(--light);
+}
+
+input[type="checkbox"]:checked
+  ~ label.modal-Additives-label
+  > span.coffee-Additives {
   background: #e1d4c9;
   color: var(--dark);
 }
@@ -753,11 +774,6 @@ input[type="radio"]:checked + .coffee-size {
   color: var(--dark);
 }
 
-.modal-size-btn:active .coffee-size {
-  background: #e1d4c9;
-  color: var(--dark);
-}
-
 .modal-Additives-input,
 .modal-size-btn.button {
   position: absolute;
@@ -766,11 +782,6 @@ input[type="radio"]:checked + .coffee-size {
 }
 
 .modal-Additives-label.button:hover {
-  background-color: var(--container);
-  color: var(--light);
-}
-
-.modal-Additives-checked {
   background-color: var(--container);
   color: var(--light);
 }
@@ -789,16 +800,6 @@ input[type="radio"]:checked + .coffee-size {
 .modal-Additives-label.button:hover .coffee-Additives.button {
   background-color: #e1d4c9;
   color: var(--dark);
-}
-
-input[type="checkbox"]:checked + .coffee-Additives.button {
-  background-color: #e1d4c9;
-  color: var(--dark);
-}
-
-.modal-Additives-label input[type="checkbox"]:checked {
-  background-color: #665f55;
-  color: var(--light);
 }
 
 .total {
