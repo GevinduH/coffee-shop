@@ -1,11 +1,11 @@
-const coffeeSelector = document.getElementById("coffee-Selector")
-const teaSelector = document.getElementById("tea-Selector")
-const dessertSelector = document.getElementById("dessert-Selector")
+const coffeeSelector = document.getElementById("coffee-Selector");
+const teaSelector = document.getElementById("tea-Selector");
+const dessertSelector = document.getElementById("dessert-Selector");
 const grid = document.getElementById("menu-grid");
-const menuGrid = document.getElementById("menu-grid")
-const menuButton = document.getElementById("coffee-menu")
-const coffee_modal = document.getElementById('.modal')
-const navModal = document.querySelector('.nav-modal')
+const menuGrid = document.getElementById("menu-grid");
+const menuButton = document.getElementById("coffee-menu");
+const coffee_modal = document.getElementById(".modal");
+const navModal = document.querySelector(".nav-modal");
 let total;
 let lastValue;
 let products;
@@ -16,19 +16,21 @@ async function fetchData() {
   const response = await fetch("./material.json");
   products = await response.json();
   productsLength = products.length;
-  createMenuGrid(coffeeSelector.value)
+  createMenuGrid(coffeeSelector.value);
 }
 
-fetchData()
+fetchData();
 
 // script for creating grids
-function createMenuGrid(x){
-    let gridContent=""; 
-    let imageIndex = 1;
-    for (let i=0;i<productsLength;i++) {
-        if (products[i].category === x) { 
-            gridContent += ` 
-                    <div class="preview" id="previewCard${i+1}" onclick="openModal('${x}',${imageIndex},${i})">
+function createMenuGrid(x) {
+  let gridContent = "";
+  let imageIndex = 1;
+  for (let i = 0; i < productsLength; i++) {
+    if (products[i].category === x) {
+      gridContent += ` 
+                    <div class="preview" id="previewCard${
+                      i + 1
+                    }" onclick="openModal('${x}',${imageIndex},${i})">
                     <img
                         src="./images/${x}-${imageIndex}.jpg"
                         alt="Photo of a ${x}"
@@ -39,108 +41,120 @@ function createMenuGrid(x){
                     </p>
                     <h3 class="price-text">$${products[i].price}</h3>
                     </div>`;
-                   imageIndex++; 
-        }
-            
+      imageIndex++;
     }
-    return grid.innerHTML = gridContent;
+  }
+  return (grid.innerHTML = gridContent);
 }
-  
-coffeeSelector.addEventListener("click",(e)=>{
-    e.preventDefault();
-    createMenuGrid(coffeeSelector.value)
-});
-  
-teaSelector.addEventListener("click",(e)=>{
-    e.preventDefault();
-    createMenuGrid(teaSelector.value)
-});
-  
-dessertSelector.addEventListener("click",(e)=>{
-    e.preventDefault();
-    createMenuGrid(dessertSelector.value)
+
+coffeeSelector.addEventListener("click", (e) => {
+  e.preventDefault();
+  createMenuGrid(coffeeSelector.value);
 });
 
-createMenuGrid(coffeeSelector.value)
+teaSelector.addEventListener("click", (e) => {
+  e.preventDefault();
+  createMenuGrid(teaSelector.value);
+});
+
+dessertSelector.addEventListener("click", (e) => {
+  e.preventDefault();
+  createMenuGrid(dessertSelector.value);
+});
+
+createMenuGrid(coffeeSelector.value);
 
 // script for the  coffee-modal calculations
 function checkSizeS(value) {
-  value = Math.abs(value)
-  total = Math.abs(total)
-  const sizeS = document.getElementById("size-s")
-  total -= lastValue
-  if (sizeS.checked == 1){
-    total = total+value;
+  value = Math.abs(value);
+  total = Math.abs(total);
+  const sizeS = document.getElementById("size-s");
+  total -= lastValue;
+  if (sizeS.checked == 1) {
+    total = total + value;
   }
-  lastValue = value
-  document.querySelector('.total h3:last-child').innerText = `$${total.toFixed(2)}`;
-  return total
+  lastValue = value;
+  document.querySelector(".total h3:last-child").innerText = `$${total.toFixed(
+    2
+  )}`;
+  return total;
 }
-  
+
 function checkSizeM(value) {
-  value = Math.abs(value)
-  total = Math.abs(total)
-  const sizeM = document.getElementById("size-m")
-  total -= lastValue
-  if (sizeM.checked == 1){
-    total = total+value;
-  } 
-  lastValue = value
-  document.querySelector('.total h3:last-child').innerText = `$${total.toFixed(2)}`;
-  return total
+  value = Math.abs(value);
+  total = Math.abs(total);
+  const sizeM = document.getElementById("size-m");
+  total -= lastValue;
+  if (sizeM.checked == 1) {
+    total = total + value;
+  }
+  lastValue = value;
+  document.querySelector(".total h3:last-child").innerText = `$${total.toFixed(
+    2
+  )}`;
+  return total;
 }
 
 function checkSizeL(value) {
-  value = Math.abs(value)
-  total = Math.abs(total)
-  const sizeL = document.getElementById("size-l")
-  total -= lastValue
-  if (sizeL.checked == 1){
-    total = total+value;
-  } 
-  lastValue = value
-  document.querySelector('.total h3:last-child').innerText = `$${total.toFixed(2)}`;
-  return total,lastValue
-}
-
-function additive1(value,i){
-  const Additive1 = document.getElementById("Additives1")
-  if (Additive1.checked == 1){
-    total = total+value;
-  } else {
-    total = total-value;
+  value = Math.abs(value);
+  total = Math.abs(total);
+  const sizeL = document.getElementById("size-l");
+  total -= lastValue;
+  if (sizeL.checked == 1) {
+    total = total + value;
   }
-  document.querySelector('.total h3:last-child').innerText = `$${total.toFixed(2)}`;
-  return total
+  lastValue = value;
+  document.querySelector(".total h3:last-child").innerText = `$${total.toFixed(
+    2
+  )}`;
+  return total, lastValue;
 }
 
-function additive2(value,i){
-  const Additive2 = document.getElementById("Additives2")
-  if (Additive2.checked == 1){
-    total = total+value;
+function additive1(value, i) {
+  const Additive1 = document.getElementById("Additives1");
+  if (Additive1.checked == 1) {
+    total = total + value;
   } else {
-    total = total-value;
+    total = total - value;
   }
-  document.querySelector('.total h3:last-child').innerText = `$${total.toFixed(2)}`;
-  return total
+  document.querySelector(".total h3:last-child").innerText = `$${total.toFixed(
+    2
+  )}`;
+  return total;
 }
 
-function additive3(value,i){
-  const labelAdditive3 = document.getElementById("label-Additives3")
-  const Additive3 = document.getElementById("Additives3")
-  if (Additive3.checked == 1){
-    total = total+value;
+function additive2(value, i) {
+  const Additive2 = document.getElementById("Additives2");
+  if (Additive2.checked == 1) {
+    total = total + value;
   } else {
-    total = total-value;
-  }document.querySelector('.total h3:last-child').innerText = `$${total.toFixed(2)}`;
-  return total
+    total = total - value;
+  }
+  document.querySelector(".total h3:last-child").innerText = `$${total.toFixed(
+    2
+  )}`;
+  return total;
 }
 
-//  script for creating/opening/closing modals 
+function additive3(value, i) {
+  const labelAdditive3 = document.getElementById("label-Additives3");
+  const Additive3 = document.getElementById("Additives3");
+  if (Additive3.checked == 1) {
+    total = total + value;
+  } else {
+    total = total - value;
+  }
+  document.querySelector(".total h3:last-child").innerText = `$${total.toFixed(
+    2
+  )}`;
+  return total;
+}
+
+//  script for creating/opening/closing modals
 function createModal(x, imageIndex, i) {
-    total = Math.abs(products[i].price);
-    lastValue = Math.abs(products[i].sizes.s['add-price'])
-    menuGrid.innerHTML += `
+  total = products[i].price;
+  lastValue = Math.abs(products[i].sizes.s["add-price"]);
+  menuGrid.innerHTML += `
     <dialog class="modal" id="modal">
         <div class="modal-container">
             <div class="box">
@@ -162,17 +176,29 @@ function createModal(x, imageIndex, i) {
                     <p class="Additives-p">Size</p>
                     <div class="Additives-button-set">
                         <label class="modal-size-label button">
-                          <input type="radio" value="${products[i].sizes.s['add-price']}" name="Size" id="size-s" class="modal-size-btn button" onclick="checkSizeS(${products[i].sizes.s['add-price']})" checked>
+                          <input type="radio" value="${
+                            products[i].sizes.s["add-price"]
+                          }" name="Size" id="size-s" class="modal-size-btn button" onclick="checkSizeS(${
+    products[i].sizes.s["add-price"]
+  })" checked>
                               <span class="coffee-size button">S</span>
                               ${products[i].sizes.s.size}
                         </label>
                         <label class="modal-size-label button">
-                          <input class="modal-size-btn button" type="radio" id="size-m" value="${products[i].sizes.m['add-price']}" name="Size" onclick="checkSizeM(${products[i].sizes.m['add-price']})">
+                          <input class="modal-size-btn button" type="radio" id="size-m" value="${
+                            products[i].sizes.m["add-price"]
+                          }" name="Size" onclick="checkSizeM(${
+    products[i].sizes.m["add-price"]
+  })">
                               <span class="coffee-size button">M</span>
                               ${products[i].sizes.m.size}
                         </label>
                         <label class="modal-size-label button">
-                          <input class="modal-size-btn button" type="radio" value="${products[i].sizes.l['add-price']}" name="Size" id="size-l" onclick="checkSizeL(${products[i].sizes.l['add-price']})">
+                          <input class="modal-size-btn button" type="radio" value="${
+                            products[i].sizes.l["add-price"]
+                          }" name="Size" id="size-l" onclick="checkSizeL(${
+    products[i].sizes.l["add-price"]
+  })">
                               <span class="coffee-size button">L</span>
                               ${products[i].sizes.l.size}
                         </label>
@@ -181,11 +207,25 @@ function createModal(x, imageIndex, i) {
                 <div class="modal-additives">
                   <p class="Additives-p">Additives</p>
                   <div class="Additives-button-set">
-                      ${products[i].additives.map((additive, index) => `
-                          <label class="modal-Additives-label button" id="label-Additives${index+1}">
-                              <input type="checkbox" class="modal-Additives-input" id="Additives${index+1}" name="${additive.name}" value="${additive['add-price']}" onclick="additive${index+1}(${additive['add-price']},'${i}')">
-                              <span class="coffee-Additives button">${index+1}</span> ${additive.name}
-                          </label>`).join('')}
+                      ${products[i].additives
+                        .map(
+                          (additive, index) => `
+                          <label class="modal-Additives-label button" id="label-Additives${
+                            index + 1
+                          }">
+                              <input type="checkbox" class="modal-Additives-input" id="Additives${
+                                index + 1
+                              }" name="${additive.name}" value="${
+                            additive["add-price"]
+                          }" onclick="additive${index + 1}(${
+                            additive["add-price"]
+                          },'${i}')">
+                              <span class="coffee-Additives button">${
+                                index + 1
+                              }</span> ${additive.name}
+                          </label>`
+                        )
+                        .join("")}
                   </div>
                 </div>
                 <div class="total">
@@ -236,35 +276,34 @@ function createModal(x, imageIndex, i) {
         </div>
     </dialog>`;
 }
-  
+
 function closeModal() {
-    const modal = document.querySelector('.modal');
-    document.body.style.position = '';
-    document.body.style.top = '';
-    modal.close();
-    modal.remove();
+  const modal = document.querySelector(".modal");
+  document.body.style.position = "";
+  document.body.style.top = "";
+  modal.close();
+  modal.remove();
 }
-  
+
 function openModal(x, imageIndex, i) {
-    createModal(x, imageIndex, i);
-    document.body.style.position = 'fixed';
-    document.body.style.top = `-${window.scrollY}px`;
-    const modal = document.querySelector('.modal');
-    modal.showModal();
+  createModal(x, imageIndex, i);
+  document.body.style.position = "fixed";
+  document.body.style.top = `-${window.scrollY}px`;
+  const modal = document.querySelector(".modal");
+  modal.showModal();
 }
 
 // script for the navigation modal
 function openNavModal() {
-    navModal.classList.add("nav-modal-flex")
-    document.body.style.position = 'fixed';
-    document.body.style.top = `-${window.scrollY}px`;
-    navModal.showModal();
+  navModal.classList.add("nav-modal-flex");
+  document.body.style.position = "fixed";
+  document.body.style.top = `-${window.scrollY}px`;
+  navModal.showModal();
 }
-  
+
 function closeNavModal() {
-    navModal.classList.remove("nav-modal-flex")
-    document.body.style.position = '';
-    document.body.style.top = '';
-    navModal.close();
+  navModal.classList.remove("nav-modal-flex");
+  document.body.style.position = "";
+  document.body.style.top = "";
+  navModal.close();
 }
-  

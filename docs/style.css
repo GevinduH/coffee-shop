@@ -1326,7 +1326,7 @@ section#mobile-app {
   }
 }
 
-@media (max-width: 840px) {
+@media (max-width: 760px) {
   body {
     margin: 20px 16px 40px 16px;
   }
