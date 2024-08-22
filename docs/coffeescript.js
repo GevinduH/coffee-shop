@@ -62,16 +62,14 @@ dessertSelector.addEventListener("click", (e) => {
   createMenuGrid(dessertSelector.value);
 });
 
-createMenuGrid(coffeeSelector.value);
-
 // script for the  coffee-modal calculations
 function checkSizeS(value) {
   value = Math.abs(value);
   total = Math.abs(total);
   const sizeS = document.getElementById("size-s");
   total -= lastValue;
-  if (sizeS.checked == 1) {
-    total = total + value;
+  if (sizeS.checked === true) {
+    total += value;
   }
   lastValue = value;
   document.querySelector(".total h3:last-child").innerText = `$${total.toFixed(
@@ -85,8 +83,8 @@ function checkSizeM(value) {
   total = Math.abs(total);
   const sizeM = document.getElementById("size-m");
   total -= lastValue;
-  if (sizeM.checked == 1) {
-    total = total + value;
+  if (sizeM.checked === true) {
+    total += value;
   }
   lastValue = value;
   document.querySelector(".total h3:last-child").innerText = `$${total.toFixed(
@@ -100,8 +98,8 @@ function checkSizeL(value) {
   total = Math.abs(total);
   const sizeL = document.getElementById("size-l");
   total -= lastValue;
-  if (sizeL.checked == 1) {
-    total = total + value;
+  if (sizeL.checked === true) {
+    total += value;
   }
   lastValue = value;
   document.querySelector(".total h3:last-child").innerText = `$${total.toFixed(
@@ -113,11 +111,11 @@ function checkSizeL(value) {
 function additive1(value, i) {
   value = Math.abs(value);
   total = Math.abs(total);
-  const Additive1 = document.getElementById("Additives1");
-  if (Additive1.checked == 1) {
-    total = total + value;
+  const additive1 = document.getElementById("additives1");
+  if (additive1.checked === true) {
+    total += value;
   } else {
-    total = total - value;
+    total -= value;
   }
   document.querySelector(".total h3:last-child").innerText = `$${total.toFixed(
     2
@@ -128,11 +126,11 @@ function additive1(value, i) {
 function additive2(value, i) {
   value = Math.abs(value);
   total = Math.abs(total);
-  const Additive2 = document.getElementById("Additives2");
-  if (Additive2.checked == 1) {
-    total = total + value;
+  const additive2 = document.getElementById("additives2");
+  if (additive2.checked === true) {
+    total += value;
   } else {
-    total = total - value;
+    total -= value;
   }
   document.querySelector(".total h3:last-child").innerText = `$${total.toFixed(
     2
@@ -143,11 +141,11 @@ function additive2(value, i) {
 function additive3(value, i) {
   value = Math.abs(value);
   total = Math.abs(total);
-  const Additive3 = document.getElementById("Additives3");
-  if (Additive3.checked == 1) {
-    total = total + value;
+  const additive3 = document.getElementById("additives3");
+  if (additive3.checked === true) {
+    total += value;
   } else {
-    total = total - value;
+    total -= value;
   }
   document.querySelector(".total h3:last-child").innerText = `$${total.toFixed(
     2
@@ -178,8 +176,8 @@ function createModal(x, imageIndex, i) {
                     </p>
                 </div>
                 <div class="modal-size">
-                    <p class="Additives-p">Size</p>
-                    <div class="Additives-button-set">
+                    <p class="additives-p">Size</p>
+                    <div class="additives-button-set">
                         <div>
                           <input type="radio" value="${
                             products[i].sizes.s["add-price"]
@@ -222,13 +220,13 @@ function createModal(x, imageIndex, i) {
                     </div>
                 </div>
                 <div class="modal-additives">
-                  <p class="Additives-p">Additives</p>
-                  <div class="Additives-button-set">
+                  <p class="additives-p">Additives</p>
+                  <div class="additives-button-set">
                       ${products[i].additives
                         .map(
                           (additive, index) => `
                           <div>
-                            <input type="checkbox" class="modal-Additives-input" id="Additives${
+                            <input type="checkbox" class="modal-Additives-input" id="additives${
                               index + 1
                             }" name="${additive.name}" value="${
                             additive["add-price"]
