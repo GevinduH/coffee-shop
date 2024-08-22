@@ -577,11 +577,9 @@ div.preview {
 }
 
 .icon {
-  border-radius: 100px;
+  border-radius: 100%;
   background: #c1b6ad;
   width: 30px;
-  height: 30px;
-  padding-top: 5px;
 }
 
 .item:hover {
@@ -730,8 +728,8 @@ div.preview {
   color: var(--dark);
 }
 
-label.modal-size-label input[type="radio"]:checked {
-  background-color: var(--container);
+label.modal-size-label + input[type="radio"]:checked {
+  background: var(--container);
   color: var(--light);
 }
 
@@ -1097,7 +1095,6 @@ section#mobile-app {
 
   .coffee-size {
     background-color: #c1b6ad;
-    padding: 6px 9.75px;
     border-radius: 100px;
   }
 
