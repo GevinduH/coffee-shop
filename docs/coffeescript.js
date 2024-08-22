@@ -10,10 +10,17 @@ let productsLength;
 
 // reading the material.JSON file
 async function fetchData() {
-  const response = await fetch("./material.json");
-  products = await response.json();
-  productsLength = products.length;
-  createMenuGrid(coffeeSelector.value);
+  try {
+    const response = await fetch("./material.json");
+    if (!response.ok) {
+      throw new error("could not fetch data");
+    }
+    products = await response.json();
+    productsLength = products.length;
+    createMenuGrid(coffeeSelector.value);
+  } catch (error) {
+    console.error(error);
+  }
 }
 
 fetchData();
