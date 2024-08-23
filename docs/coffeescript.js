@@ -19,7 +19,7 @@ async function fetchData() {
     productsLength = products.length;
     createMenuGrid(coffeeSelector.value);
   } catch (error) {
-    console.error(error);
+    console.error("Failed to fetch data", error);
   }
 }
 
