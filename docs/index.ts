@@ -3,7 +3,7 @@ const menuButton = document.getElementById("button-icon-burger");
 const navModal = document.getElementById("navModal")!;
 const sliderContainer = document.getElementById("sliderContainer")!;
 let indexValue:number = 1;
-let slideInterval;
+let slideInterval:any;
 let touchStartX:number = 0;
 let touchEndX:number = 0;
 
