@@ -8,31 +8,31 @@ const dessertSelector = document.getElementById(
 const menuGrid = document.getElementById("menuGrid") as HTMLDivElement;
 const navModal = document.getElementById("navModal");
 let total: number;
-let products: product[];
+let products: Product[];
 let productsLength: number;
 
 //creating a type
-type product = {
+type Product = {
   name: string;
   description: string;
   price: string;
   category: string;
-  sizes: size;
-  additives: additives[];
+  sizes: Size;
+  additives: Additives[];
 };
 
-type additives = {
+type Additives = {
   name: string;
   "add-price": string;
 };
 
-type size = {
-  s: sizeObj;
-  m: sizeObj;
-  l: sizeObj;
+type Size = {
+  s: SizeObj;
+  m: SizeObj;
+  l: SizeObj;
 };
 
-type sizeObj = {
+type SizeObj = {
   size: string;
   "add-price": string;
 };
@@ -270,8 +270,8 @@ function closeModal(): void {
   const modal = document.querySelector(".modal");
   document.body.style.position = "";
   document.body.style.top = "";
-  (modal as any).close();
-  (modal as any).remove();
+  (modal as HTMLDialogElement).close();
+  (modal as HTMLDialogElement).remove();
 }
 
 function openModal(x: number, imageIndex: number, i: number): void {
@@ -279,7 +279,7 @@ function openModal(x: number, imageIndex: number, i: number): void {
   document.body.style.position = "fixed";
   document.body.style.top = `-${window.scrollY}px`;
   const modal = document.querySelector(".modal");
-  (modal as any).showModal();
+  (modal as HTMLDialogElement).showModal();
 }
 
 // script for the navigation modal
@@ -290,7 +290,7 @@ function openNavModal(): void {
   navModal.classList.add("navModalFlex");
   document.body.style.position = "fixed";
   document.body.style.top = `-${window.scrollY}px`;
-  (navModal as any).showModal();
+  (navModal as HTMLDialogElement).showModal();
 }
 
 function closeNavModal(): void {
@@ -300,5 +300,5 @@ function closeNavModal(): void {
   navModal.classList.remove("navModalFlex");
   document.body.style.position = "";
   document.body.style.top = "";
-  (navModal as any).close();
+  (navModal as HTMLDialogElement).close();
 }

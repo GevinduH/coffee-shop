@@ -1,7 +1,7 @@
 const navModal = document.getElementById("navModal");
 const sliderContainer = document.getElementById("sliderContainer");
 let indexValue: number = 1;
-let slideInterval: any;
+let slideInterval: number;
 let touchStartX: number = 0;
 let touchEndX: number = 0;
 
@@ -86,7 +86,7 @@ function openNavModal(): void {
   navModal.classList.add("navModalFlex");
   document.body.style.position = "fixed";
   document.body.style.top = `-${window.scrollY}px`;
-  (navModal as any).showModal();
+  (navModal as HTMLDialogElement).showModal();
 }
 
 function closeNavModal(): void {
@@ -96,5 +96,5 @@ function closeNavModal(): void {
   navModal.classList.remove("navModalFlex");
   document.body.style.position = "";
   document.body.style.top = "";
-  (navModal as any).close();
+  (navModal as HTMLDialogElement).close();
 }
