@@ -38,7 +38,6 @@ var coffeeSelector = document.getElementById("coffeeSelector");
 var teaSelector = document.getElementById("teaSelector");
 var dessertSelector = document.getElementById("dessertSelector");
 var menuGrid = document.getElementById("menuGrid");
-var navModal = document.getElementById("navModal");
 var total;
 var products;
 var productsLength;
@@ -92,19 +91,18 @@ if (coffeeSelector && teaSelector && dessertSelector) {
         e.preventDefault();
         createMenuGrid(coffeeSelector.value);
     });
-    // if (!teaSelector) {throw new Error("coffee selector item-value is null")}
     teaSelector.addEventListener("click", function (e) {
         e.preventDefault();
         createMenuGrid(teaSelector.value);
     });
-    // if (!dessertSelector) {throw new Error("coffee selector item-value is null")}
     dessertSelector.addEventListener("click", function (e) {
         e.preventDefault();
         createMenuGrid(dessertSelector.value);
     });
 }
-else
+else {
     throw new Error("coffee selector item-value is null");
+}
 // script for the  coffee-modal calculations
 function addSize(value) {
     total = Math.abs(total);
@@ -114,8 +112,9 @@ function addSize(value) {
     if (currentTotal) {
         currentTotal.innerText = "$".concat(value.toFixed(2));
     }
-    else
+    else {
         throw new Error("current Total is NULL");
+    }
 }
 function addAdditive(value, id) {
     value = Math.abs(value);
@@ -149,23 +148,4 @@ function openModal(x, imageIndex, i) {
     document.body.style.top = "-".concat(window.scrollY, "px");
     var modal = document.querySelector(".modal");
     modal.showModal();
-}
-// script for the navigation modal
-function openNavModal() {
-    if (!navModal) {
-        throw new Error("navModal failed to load");
-    }
-    navModal.classList.add("navModalFlex");
-    document.body.style.position = "fixed";
-    document.body.style.top = "-".concat(window.scrollY, "px");
-    navModal.showModal();
-}
-function closeNavModal() {
-    if (!navModal) {
-        throw new Error("navModal failed to load");
-    }
-    navModal.classList.remove("navModalFlex");
-    document.body.style.position = "";
-    document.body.style.top = "";
-    navModal.close();
 }

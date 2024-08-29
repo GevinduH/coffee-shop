@@ -6,7 +6,6 @@ const dessertSelector = document.getElementById(
   "dessertSelector"
 ) as HTMLInputElement;
 const menuGrid = document.getElementById("menuGrid") as HTMLDivElement;
-const navModal = document.getElementById("navModal");
 let total: number;
 let products: Product[];
 let productsLength: number;
@@ -282,25 +281,4 @@ function openModal(x: number, imageIndex: number, i: number): void {
   document.body.style.top = `-${window.scrollY}px`;
   const modal = document.querySelector(".modal");
   (modal as HTMLDialogElement).showModal();
-}
-
-// script for the navigation modal
-function openNavModal(): void {
-  if (!navModal) {
-    throw new Error("navModal failed to load");
-  }
-  navModal.classList.add("navModalFlex");
-  document.body.style.position = "fixed";
-  document.body.style.top = `-${window.scrollY}px`;
-  (navModal as HTMLDialogElement).showModal();
-}
-
-function closeNavModal(): void {
-  if (!navModal) {
-    throw new Error("navModal failed to load");
-  }
-  navModal.classList.remove("navModalFlex");
-  document.body.style.position = "";
-  document.body.style.top = "";
-  (navModal as HTMLDialogElement).close();
 }

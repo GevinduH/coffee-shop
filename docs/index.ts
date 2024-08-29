@@ -1,4 +1,3 @@
-const navModal = document.getElementById("navModal");
 const sliderContainer = document.getElementById("sliderContainer");
 let indexValue: number = 1;
 let slideInterval: number;
@@ -77,24 +76,4 @@ function showImage(e: number): void {
   });
   img[indexValue - 1].style.display = "block";
   sliders[indexValue - 1].style.background = "#665F55";
-}
-
-function openNavModal(): void {
-  if (!navModal) {
-    throw new Error("navModal failed to load");
-  }
-  navModal.classList.add("navModalFlex");
-  document.body.style.position = "fixed";
-  document.body.style.top = `-${window.scrollY}px`;
-  (navModal as HTMLDialogElement).showModal();
-}
-
-function closeNavModal(): void {
-  if (!navModal) {
-    throw new Error("navModal failed to load");
-  }
-  navModal.classList.remove("navModalFlex");
-  document.body.style.position = "";
-  document.body.style.top = "";
-  (navModal as HTMLDialogElement).close();
 }
