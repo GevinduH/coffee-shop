@@ -1,5 +1,5 @@
-const navModal = document.getElementById("navModal")!;
-const sliderContainer = document.getElementById("sliderContainer")!;
+const navModal = document.getElementById("navModal");
+const sliderContainer = document.getElementById("sliderContainer");
 let indexValue: number = 1;
 let slideInterval: any;
 let touchStartX: number = 0;
