@@ -1,5 +1,3 @@
-var navMenuButton = document.getElementById("coffee-menu");
-var menuButton = document.getElementById("button-icon-burger");
 var navModal = document.getElementById("navModal");
 var sliderContainer = document.getElementById("sliderContainer");
 var indexValue = 1;
@@ -10,7 +8,7 @@ showImage(indexValue);
 startInterval();
 // Touch events for slider
 if (!sliderContainer) {
-    throw new Error('slider Container is NULL');
+    throw new Error("slider Container is NULL");
 }
 sliderContainer.addEventListener("touchstart", function (e) {
     touchStartX = e.changedTouches[0].screenX;
@@ -72,7 +70,7 @@ function showImage(e) {
 }
 function openNavModal() {
     if (!navModal) {
-        throw new Error('navModal failed to load');
+        throw new Error("navModal failed to load");
     }
     navModal.classList.add("navModalFlex");
     document.body.style.position = "fixed";
@@ -81,7 +79,7 @@ function openNavModal() {
 }
 function closeNavModal() {
     if (!navModal) {
-        throw new Error('navModal failed to load');
+        throw new Error("navModal failed to load");
     }
     navModal.classList.remove("navModalFlex");
     document.body.style.position = "";

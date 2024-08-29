@@ -1,19 +1,18 @@
-const navMenuButton = document.getElementById("coffee-menu");
-const menuButton = document.getElementById("button-icon-burger");
-const navModal = document.getElementById("navModal")!;
-const sliderContainer = document.getElementById("sliderContainer")!;
-let indexValue:number = 1;
-let slideInterval:any;
-let touchStartX:number = 0;
-let touchEndX:number = 0;
+const navModal = document.getElementById("navModal");
+const sliderContainer = document.getElementById("sliderContainer");
+let indexValue: number = 1;
+let slideInterval: any;
+let touchStartX: number = 0;
+let touchEndX: number = 0;
 
 showImage(indexValue);
 startInterval();
 
 // Touch events for slider
-if (!sliderContainer) {throw new Error('slider Container is NULL')}
+if (!sliderContainer) {
+  throw new Error("slider Container is NULL");
+}
 sliderContainer.addEventListener("touchstart", (e) => {
-    
   touchStartX = e.changedTouches[0].screenX;
 });
 
@@ -25,7 +24,7 @@ sliderContainer.addEventListener("touchend", (e) => {
   handleSwipe();
 });
 
-function handleSwipe():void {
+function handleSwipe(): void {
   const swipeDistance = touchEndX - touchStartX;
 
   if (Math.abs(swipeDistance) > 50) {
@@ -39,31 +38,31 @@ function handleSwipe():void {
   }
 }
 
-function startInterval():void {
+function startInterval(): void {
   slideInterval = setInterval(() => {
     sideSlide(1);
   }, 5000);
 }
 
-function resetTime():void {
+function resetTime(): void {
   clearInterval(slideInterval);
   startInterval();
 }
 
-function btnSlider(e:number):void {
+function btnSlider(e: number): void {
   resetTime();
   showImage((indexValue = e));
 }
 
-function sideSlide(e:number):void {
+function sideSlide(e: number): void {
   indexValue += e;
   resetTime();
   showImage(indexValue);
 }
 
-function showImage(e:number):void {
-  const img= document.querySelectorAll<HTMLElement>(".slider-image")!;
-  const sliders= document.querySelectorAll<HTMLElement>(".controls div")!;
+function showImage(e: number): void {
+  const img = document.querySelectorAll<HTMLElement>(".slider-image")!;
+  const sliders = document.querySelectorAll<HTMLElement>(".controls div")!;
   if (e > img.length) {
     indexValue = 1;
   }
@@ -80,16 +79,20 @@ function showImage(e:number):void {
   sliders[indexValue - 1].style.background = "#665F55";
 }
 
-function openNavModal():void {
-    if (!navModal) {throw new Error('navModal failed to load')}
+function openNavModal(): void {
+  if (!navModal) {
+    throw new Error("navModal failed to load");
+  }
   navModal.classList.add("navModalFlex");
   document.body.style.position = "fixed";
   document.body.style.top = `-${window.scrollY}px`;
   (navModal as any).showModal();
 }
 
-function closeNavModal():void {
-    if (!navModal) {throw new Error('navModal failed to load')}
+function closeNavModal(): void {
+  if (!navModal) {
+    throw new Error("navModal failed to load");
+  }
   navModal.classList.remove("navModalFlex");
   document.body.style.position = "";
   document.body.style.top = "";
