@@ -1,16 +1,16 @@
-const navMenuButton = document.getElementById("coffee-menu");
-const menuButton = document.getElementById("button-icon-burger");
-const navModal = document.getElementById("navModal");
 const sliderContainer = document.getElementById("sliderContainer");
-let indexValue = 1;
-let slideInterval;
-let touchStartX = 0;
-let touchEndX = 0;
+let indexValue: number = 1;
+let slideInterval: number;
+let touchStartX: number = 0;
+let touchEndX: number = 0;
 
 showImage(indexValue);
 startInterval();
 
 // Touch events for slider
+if (!sliderContainer) {
+  throw new Error("slider Container is NULL");
+}
 sliderContainer.addEventListener("touchstart", (e) => {
   touchStartX = e.changedTouches[0].screenX;
 });
@@ -23,7 +23,7 @@ sliderContainer.addEventListener("touchend", (e) => {
   handleSwipe();
 });
 
-function handleSwipe() {
+function handleSwipe(): void {
   const swipeDistance = touchEndX - touchStartX;
 
   if (Math.abs(swipeDistance) > 50) {
@@ -37,31 +37,31 @@ function handleSwipe() {
   }
 }
 
-function startInterval() {
+function startInterval(): void {
   slideInterval = setInterval(() => {
     sideSlide(1);
   }, 5000);
 }
 
-function resetTime() {
+function resetTime(): void {
   clearInterval(slideInterval);
   startInterval();
 }
 
-function btnSlider(e) {
+function btnSlider(e: number): void {
   resetTime();
   showImage((indexValue = e));
 }
 
-function sideSlide(e) {
+function sideSlide(e: number): void {
   indexValue += e;
   resetTime();
   showImage(indexValue);
 }
 
-function showImage(e) {
-  const img = document.querySelectorAll(".slider-image");
-  const sliders = document.querySelectorAll(".controls div");
+function showImage(e: number): void {
+  const img = document.querySelectorAll<HTMLElement>(".slider-image")!;
+  const sliders = document.querySelectorAll<HTMLElement>(".controls div")!;
   if (e > img.length) {
     indexValue = 1;
   }
@@ -76,18 +76,4 @@ function showImage(e) {
   });
   img[indexValue - 1].style.display = "block";
   sliders[indexValue - 1].style.background = "#665F55";
-}
-
-function openNavModal() {
-  navModal.classList.add("navModalFlex");
-  document.body.style.position = "fixed";
-  document.body.style.top = `-${window.scrollY}px`;
-  navModal.showModal();
-}
-
-function closeNavModal() {
-  navModal.classList.remove("navModalFlex");
-  document.body.style.position = "";
-  document.body.style.top = "";
-  navModal.close();
 }

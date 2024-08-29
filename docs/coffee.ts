@@ -1,22 +1,53 @@
-const coffeeSelector = document.getElementById("coffeeSelector");
-const teaSelector = document.getElementById("teaSelector");
-const dessertSelector = document.getElementById("dessertSelector");
-const menuGrid = document.getElementById("menuGrid");
-const menuButton = document.getElementById("coffeeMenu");
-const navModal = document.getElementById("navModal");
-let total;
-let products;
-let productsLength;
+const coffeeSelector = document.getElementById(
+  "coffeeSelector"
+) as HTMLInputElement;
+const teaSelector = document.getElementById("teaSelector") as HTMLInputElement;
+const dessertSelector = document.getElementById(
+  "dessertSelector"
+) as HTMLInputElement;
+const menuGrid = document.getElementById("menuGrid") as HTMLDivElement;
+let total: number;
+let products: Product[];
+let productsLength: number;
+
+//creating a type
+type Product = {
+  name: string;
+  description: string;
+  price: string;
+  category: string;
+  sizes: Size;
+  additives: Additives[];
+};
+
+type Additives = {
+  name: string;
+  "add-price": string;
+};
+
+type Size = {
+  s: SizeObj;
+  m: SizeObj;
+  l: SizeObj;
+};
+
+type SizeObj = {
+  size: string;
+  "add-price": string;
+};
 
 // reading the material.JSON file
 async function fetchData() {
   try {
     const response = await fetch("./material.json");
     if (!response.ok) {
-      throw new error("could not fetch data");
+      throw new Error("could not fetch data");
     }
     products = await response.json();
     productsLength = products.length;
+    if (!coffeeSelector) {
+      throw new Error("coffee selector item-value is null");
+    }
     createMenuGrid(coffeeSelector.value);
   } catch (error) {
     console.error("Failed to fetch data", error);
@@ -26,7 +57,7 @@ async function fetchData() {
 fetchData();
 
 // script for creating grids
-function createMenuGrid(x) {
+function createMenuGrid(x: string) {
   let gridContent = "";
   let imageIndex = 1;
   for (let i = 0; i < productsLength; i++) {
@@ -51,45 +82,56 @@ function createMenuGrid(x) {
   return (menuGrid.innerHTML = gridContent);
 }
 
-coffeeSelector.addEventListener("click", (e) => {
-  e.preventDefault();
-  createMenuGrid(coffeeSelector.value);
-});
+if (coffeeSelector && teaSelector && dessertSelector) {
+  coffeeSelector.addEventListener("click", (e) => {
+    e.preventDefault();
+    createMenuGrid(coffeeSelector.value);
+  });
 
-teaSelector.addEventListener("click", (e) => {
-  e.preventDefault();
-  createMenuGrid(teaSelector.value);
-});
+  teaSelector.addEventListener("click", (e) => {
+    e.preventDefault();
+    createMenuGrid(teaSelector.value);
+  });
 
-dessertSelector.addEventListener("click", (e) => {
-  e.preventDefault();
-  createMenuGrid(dessertSelector.value);
-});
+  dessertSelector.addEventListener("click", (e) => {
+    e.preventDefault();
+    createMenuGrid(dessertSelector.value);
+  });
+} else {
+  throw new Error("coffee selector item-value is null");
+}
 
 // script for the  coffee-modal calculations
-function addSize(value) {
+function addSize(value: number): void {
   total = Math.abs(total);
   value = Math.abs(value);
   value += total;
-  document.querySelector(".total h3:last-child").innerText = `$${value.toFixed(
-    2
-  )}`;
+  let currentTotal = document.querySelector<HTMLElement>(
+    ".total h3:last-child"
+  );
+  if (currentTotal) {
+    currentTotal.innerText = `$${value.toFixed(2)}`;
+  } else {
+    throw new Error("current Total is NULL");
+  }
 }
 
-function addAdditive(value, id) {
+function addAdditive(value: number, id: string): void {
   value = Math.abs(value);
   total = Math.abs(total);
-  const additive = document.getElementById(`${id}`);
-  total = total + (additive.checked === true ? value : -value);
-  document.querySelector(".total h3:last-child").innerText = `$${total.toFixed(
-    2
-  )}`;
-  return total;
+  const additive = document.getElementById(`${id}`) as HTMLInputElement;
+  let currentTotal = document.querySelector<HTMLElement>(
+    ".total h3:last-child"
+  );
+  if (additive && currentTotal) {
+    total = total + (additive.checked === true ? value : -value);
+    currentTotal.innerText = `$${total.toFixed(2)}`;
+  } else throw new Error("current Total or additive Element is NULL");
 }
 
 //  script for creating/opening/closing modals
-function createModal(x, imageIndex, i) {
-  total = products[i].price;
+function createModal(x: number, imageIndex: number, i: number): void {
+  total = parseFloat(products[i].price);
   menuGrid.innerHTML += `
     <dialog class="modal" id="modal">
         <div class="modalContainer">
@@ -146,7 +188,7 @@ function createModal(x, imageIndex, i) {
                             products[i].sizes.l["add-price"]
                           })">
                           <label class="modalSizeLabel button">
-                            <span class="coffee-size button">L</span>
+                            <span class="coffeeSize button">L</span>
                             ${products[i].sizes.l.size}
                           </label>
                         </div>
@@ -157,7 +199,7 @@ function createModal(x, imageIndex, i) {
                   <div class="additivesButtonSet">
                       ${products[i].additives
                         .map(
-                          (additive, index) => `
+                          (additive: Additives, index: number) => `
                           <div>
                             <input type="checkbox" class="modalAdditivesInput" id="additives${
                               index + 1
@@ -225,33 +267,18 @@ function createModal(x, imageIndex, i) {
     </dialog>`;
 }
 
-function closeModal() {
+function closeModal(): void {
   const modal = document.querySelector(".modal");
   document.body.style.position = "";
   document.body.style.top = "";
-  modal.close();
-  modal.remove();
+  (modal as HTMLDialogElement).close();
+  (modal as HTMLDialogElement).remove();
 }
 
-function openModal(x, imageIndex, i) {
+function openModal(x: number, imageIndex: number, i: number): void {
   createModal(x, imageIndex, i);
   document.body.style.position = "fixed";
   document.body.style.top = `-${window.scrollY}px`;
   const modal = document.querySelector(".modal");
-  modal.showModal();
-}
-
-// script for the navigation modal
-function openNavModal() {
-  navModal.classList.add("navModalFlex");
-  document.body.style.position = "fixed";
-  document.body.style.top = `-${window.scrollY}px`;
-  navModal.showModal();
-}
-
-function closeNavModal() {
-  navModal.classList.remove("navModalFlex");
-  document.body.style.position = "";
-  document.body.style.top = "";
-  navModal.close();
+  (modal as HTMLDialogElement).showModal();
 }
