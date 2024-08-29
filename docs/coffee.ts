@@ -6,33 +6,32 @@ const dessertSelector = document.getElementById(
   "dessertSelector"
 ) as HTMLInputElement;
 const menuGrid = document.getElementById("menuGrid") as HTMLDivElement;
-const navModal = document.getElementById("navModal");
 let total: number;
-let products: product[];
+let products: Product[];
 let productsLength: number;
 
 //creating a type
-type product = {
+type Product = {
   name: string;
   description: string;
   price: string;
   category: string;
-  sizes: size;
-  additives: additives[];
+  sizes: Size;
+  additives: Additives[];
 };
 
-type additives = {
+type Additives = {
   name: string;
   "add-price": string;
 };
 
-type size = {
-  s: sizeObj;
-  m: sizeObj;
-  l: sizeObj;
+type Size = {
+  s: SizeObj;
+  m: SizeObj;
+  l: SizeObj;
 };
 
-type sizeObj = {
+type SizeObj = {
   size: string;
   "add-price": string;
 };
@@ -89,18 +88,18 @@ if (coffeeSelector && teaSelector && dessertSelector) {
     createMenuGrid(coffeeSelector.value);
   });
 
-  // if (!teaSelector) {throw new Error("coffee selector item-value is null")}
   teaSelector.addEventListener("click", (e) => {
     e.preventDefault();
     createMenuGrid(teaSelector.value);
   });
 
-  // if (!dessertSelector) {throw new Error("coffee selector item-value is null")}
   dessertSelector.addEventListener("click", (e) => {
     e.preventDefault();
     createMenuGrid(dessertSelector.value);
   });
-} else throw new Error("coffee selector item-value is null");
+} else {
+  throw new Error("coffee selector item-value is null");
+}
 
 // script for the  coffee-modal calculations
 function addSize(value: number): void {
@@ -112,7 +111,9 @@ function addSize(value: number): void {
   );
   if (currentTotal) {
     currentTotal.innerText = `$${value.toFixed(2)}`;
-  } else throw new Error("current Total is NULL");
+  } else {
+    throw new Error("current Total is NULL");
+  }
 }
 
 function addAdditive(value: number, id: string): void {
@@ -198,7 +199,7 @@ function createModal(x: number, imageIndex: number, i: number): void {
                   <div class="additivesButtonSet">
                       ${products[i].additives
                         .map(
-                          (additive: any, index: number) => `
+                          (additive: Additives, index: number) => `
                           <div>
                             <input type="checkbox" class="modalAdditivesInput" id="additives${
                               index + 1
@@ -270,8 +271,8 @@ function closeModal(): void {
   const modal = document.querySelector(".modal");
   document.body.style.position = "";
   document.body.style.top = "";
-  (modal as any).close();
-  (modal as any).remove();
+  (modal as HTMLDialogElement).close();
+  (modal as HTMLDialogElement).remove();
 }
 
 function openModal(x: number, imageIndex: number, i: number): void {
@@ -279,26 +280,5 @@ function openModal(x: number, imageIndex: number, i: number): void {
   document.body.style.position = "fixed";
   document.body.style.top = `-${window.scrollY}px`;
   const modal = document.querySelector(".modal");
-  (modal as any).showModal();
-}
-
-// script for the navigation modal
-function openNavModal(): void {
-  if (!navModal) {
-    throw new Error("navModal failed to load");
-  }
-  navModal.classList.add("navModalFlex");
-  document.body.style.position = "fixed";
-  document.body.style.top = `-${window.scrollY}px`;
-  (navModal as any).showModal();
-}
-
-function closeNavModal(): void {
-  if (!navModal) {
-    throw new Error("navModal failed to load");
-  }
-  navModal.classList.remove("navModalFlex");
-  document.body.style.position = "";
-  document.body.style.top = "";
-  (navModal as any).close();
+  (modal as HTMLDialogElement).showModal();
 }

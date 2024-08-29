@@ -1,4 +1,3 @@
-var navModal = document.getElementById("navModal");
 var sliderContainer = document.getElementById("sliderContainer");
 var indexValue = 1;
 var slideInterval;
@@ -67,22 +66,4 @@ function showImage(e) {
     });
     img[indexValue - 1].style.display = "block";
     sliders[indexValue - 1].style.background = "#665F55";
-}
-function openNavModal() {
-    if (!navModal) {
-        throw new Error("navModal failed to load");
-    }
-    navModal.classList.add("navModalFlex");
-    document.body.style.position = "fixed";
-    document.body.style.top = "-".concat(window.scrollY, "px");
-    navModal.showModal();
-}
-function closeNavModal() {
-    if (!navModal) {
-        throw new Error("navModal failed to load");
-    }
-    navModal.classList.remove("navModalFlex");
-    document.body.style.position = "";
-    document.body.style.top = "";
-    navModal.close();
 }
