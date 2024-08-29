@@ -89,18 +89,18 @@ if (coffeeSelector && teaSelector && dessertSelector) {
     createMenuGrid(coffeeSelector.value);
   });
 
-  // if (!teaSelector) {throw new Error("coffee selector item-value is null")}
   teaSelector.addEventListener("click", (e) => {
     e.preventDefault();
     createMenuGrid(teaSelector.value);
   });
 
-  // if (!dessertSelector) {throw new Error("coffee selector item-value is null")}
   dessertSelector.addEventListener("click", (e) => {
     e.preventDefault();
     createMenuGrid(dessertSelector.value);
   });
-} else throw new Error("coffee selector item-value is null");
+} else {
+  throw new Error("coffee selector item-value is null");
+}
 
 // script for the  coffee-modal calculations
 function addSize(value: number): void {
@@ -112,7 +112,9 @@ function addSize(value: number): void {
   );
   if (currentTotal) {
     currentTotal.innerText = `$${value.toFixed(2)}`;
-  } else throw new Error("current Total is NULL");
+  } else {
+    throw new Error("current Total is NULL");
+  }
 }
 
 function addAdditive(value: number, id: string): void {
@@ -198,7 +200,7 @@ function createModal(x: number, imageIndex: number, i: number): void {
                   <div class="additivesButtonSet">
                       ${products[i].additives
                         .map(
-                          (additive: any, index: number) => `
+                          (additive: Additives, index: number) => `
                           <div>
                             <input type="checkbox" class="modalAdditivesInput" id="additives${
                               index + 1
